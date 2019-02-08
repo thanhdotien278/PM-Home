@@ -53,10 +53,8 @@ Xiaomi Sensor Door
 Xiaomi Temperature and Humidity sensor
 <img src="https://user-images.githubusercontent.com/41010701/52452396-5e9c9980-2b75-11e9-8b1b-9c72e38d4613.jpg">
 Board Remote Fan IR
-<img src="https://user-images.githubusercontent.com/41010701/52454333-f9997180-2b7d-11e9-9f77-6e5ef5cac9cb.jpg">
-Xiaomi BLE Temperature and Humidity sensor
 
-## Contro Panel
+## Control Panel
 <img src="https://user-images.githubusercontent.com/41010701/52454698-55b0c580-2b7f-11e9-895b-8f4194422910.PNG">
  Home
 <img src="https://user-images.githubusercontent.com/41010701/52454700-55b0c580-2b7f-11e9-94cc-949e597b02bb.PNG">
@@ -73,4 +71,4 @@ Automation P2
 Information
 
 ## Note
-Systenm run on hassbian ver 0.85.1
+System run on hassbian ver 0.85.1
