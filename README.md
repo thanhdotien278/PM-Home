@@ -55,19 +55,22 @@ Xiaomi Temperature and Humidity sensor
 Board Remote Fan IR
 <img src="https://user-images.githubusercontent.com/41010701/52454333-f9997180-2b7d-11e9-9f77-6e5ef5cac9cb.jpg">
 Xiaomi BLE Temperature and Humidity sensor
+
 ## Contro Panel
-### Home
 <img src="https://user-images.githubusercontent.com/41010701/52454698-55b0c580-2b7f-11e9-895b-8f4194422910.PNG">
-### Remote
+ Home
 <img src="https://user-images.githubusercontent.com/41010701/52454700-55b0c580-2b7f-11e9-94cc-949e597b02bb.PNG">
-### Weather
+Remote
 <img src="https://user-images.githubusercontent.com/41010701/52454701-55b0c580-2b7f-11e9-91bd-cd1406acd488.PNG">
-### System
+Weather
 <img src="https://user-images.githubusercontent.com/41010701/52454705-56495c00-2b7f-11e9-978d-a58ed6c46a5f.PNG">
-### Automation
+System
 <img src="https://user-images.githubusercontent.com/41010701/52454706-56495c00-2b7f-11e9-8697-7a9033f639ab.PNG">
+Automation P1
 <img src="https://user-images.githubusercontent.com/41010701/52454707-56e1f280-2b7f-11e9-8c43-89f7cc383b86.PNG">
-### Information
+Automation P2
 <img src="https://user-images.githubusercontent.com/41010701/52454708-56e1f280-2b7f-11e9-83e2-7e92f249557c.PNG">
+Information
+
 ## Note
 Systenm run on hassbian ver 0.85.1
