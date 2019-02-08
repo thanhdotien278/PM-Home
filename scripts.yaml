@@ -1,0 +1,163 @@
+'1544321405842':
+  alias: Power Tivi
+  sequence:
+  - alias: ''
+    data:
+      packet:
+      - JgDSAJSVEjgSOBI4EhMSExITEhMSEhI4EjgSOBITEhMSExITEhMSExI3ExISExITEhMSExITEjgSExI4EjgSNxI4EjgSOBIABgiUlRI4EjgSNxITExISExITEhMSOBI4EjgSExITEhMSExISEhMSOBITEhMSExITEhMSExI4EhMSNxI4EjgSOBI4EjgSAAYHlJUSOBI4EjgSExITEhMRExITEjgSOBI4EhMSExITEhMSExITETgSExITEhMSExITEhMSOBITEjcSOBI4EjgSOBI4EgANBQAAAAAAAA==
+    service: switch.broadlink_send_packet_192_168_31_3
+'1544322655327':
+  alias: Source
+  sequence:
+  - data:
+      packet:
+      - JgCMAJSVEjgSOBI4EhMSExITEhMSExI3EjgSOBITEhMSExITEhMSOBITEhMSExITEhMRFBETEhMSOBI4EjgSOBI4EjgSNxIABgiVlRI3EjgSOBITEhMSExITEhMSOBI4EjgRFBETEhMSExITEjgSExITEhMSExITEhMSExITEjgSNxI4EjgSOBI4EjgSAA0FAAAAAAAAAAAAAAAA
+    service: switch.broadlink_send_packet_192_168_31_3
+'1544322808375':
+  alias: Menu
+  sequence:
+  - data:
+      packet:
+      - JgCMAJWUEjgSOBI4EhMSExITEhMSExI4ETgSOBITEhMSExITEhMSExI4EhMSOBI4ERQRFBETEjgSExI4EhMSExI4EjgSOBEABgmSlxA6EDoQOhAVEBUQFRAVEBUPOhA6EDoQFRAVEBUQFRAVEBUQOREVEDkRORAVEBUQFRA6EBUQOhAVEBUQOhA6EDkQAA0FAAAAAAAAAAAAAAAA
+    service: switch.broadlink_send_packet_192_168_31_3
+'1544322889228':
+  alias: smarthub
+  sequence:
+  - data:
+      packet:
+      - JgCMAJSVEjgSOBI4EhMSExITEhMSExI4ETgSOBITEhMSExITEhMSOBITEhMSOBI4ETgSOBITEhMSOBM3EhMSExITEhMSNxIABgiVlRI3EjgSOBITEhMSExMSEhMSOBI4EjcSExITEhMSExITEjgSExITEjgSOBI3EjgSExITEjgSOBMSEhMSExITEjgSAA0FAAAAAAAAAAAAAAAA
+    service: switch.broadlink_send_packet_192_168_31_3
+'1544323192419':
+  alias: volume up
+  sequence:
+  - data:
+      packet:
+      - JgCMAJOXEDoQOhA5EBUQFRAVEBUQFRA6EDoQOhAVEBUQFRAVEBUQORA6EDoQFRAVEBUQFRAVEBUQFRAVEDoQORE5EDoQOhAABgqTlhE5EDoROREUERQRFBEUERQRORE5ETgTEhMSEhMSExITEjgSOBI4EhMSExITEhMSExITEhMSExI3EzcSOBI4EjgSAA0FAAAAAAAAAAAAAAAA
+    service: switch.broadlink_send_packet_192_168_31_3
+'1544323288814':
+  alias: volume down
+  sequence:
+  - data:
+      packet:
+      - JgCMAJWUEjgSOBI4EhMSExITEhMSExI4EjcSOBITEhMSExITEhMSOBI4EhMSOBITEhMRExITEhMSExI4EhMSOBI4EjgSNxIABgiWlBI4ETgSOBITEhMSExITEhMSOBI4ETkRExITEhMSExITEjgSOBITEjgRFBITERQRFBETEhMSOBITEjgSOBI4EDoRAA0FAAAAAAAAAAAAAAAA
+    service: switch.broadlink_send_packet_192_168_31_3
+'1544323371569':
+  alias: mute
+  sequence:
+  - data:
+      packet:
+      - JgCMAJWUEjgSOBI4EhMSExITEhMSExI4EjcSOBITEhMSExITEhMSOBI4EjgSOBITERMSExITEhMSExITEhMSOBI4EjgSOBIABgiUlRI4EjgSOBITEhMSExITEhMSNxI4EjgSExITEhMSExITEjgSOBI4ETgSExITEhMSExITEhMSExITEjgSOBI4EjgSAA0FAAAAAAAAAAAAAAAA
+    service: switch.broadlink_send_packet_192_168_31_3
+'1544323471587':
+  alias: up chanel
+  sequence:
+  - data:
+      packet:
+      - JgCMAJSVEjgSOBI4EhMSExISExITEhI4EjgSOBITEhMSExITEhMSExI3ExISExI4EhMSExITEjgSExI3EzcTEhM3EjgSOBIABgeVlRI4EjcTNxITEhMSExITEhMSOBI4EjcTEhMSExISExITEhMSOBITEhMSOBITEhMSExI4EhMSNxM3EhMSOBI4EjgSAA0FAAAAAAAAAAAAAAAA
+    service: switch.broadlink_send_packet_192_168_31_3
+'1544323744483':
+  alias: down chanel
+  sequence:
+  - data:
+      packet:
+      - JgBGAJWVEjgSNxI4EhMSExITEhMSExI4EjgSOBITERMSExITEhMSExITEhMSExI4EhMSExITEjgSNxI4EjgSExI4EjgSOBIADQUAAA==
+    service: switch.broadlink_send_packet_192_168_31_3
+'1544324082526':
+  alias: up
+  sequence:
+  - data:
+      packet:
+      - JgCMAJWVEjcSOBI4EhMSExITEhMSExI4EjgSOBITERMSExITEhMSExITEhMSExITEjgSOBITEjgSOBE4EjgSOBITEhMSOBIABgiUlRI4EjgSNxITEhMSExITEhMSOBI4EjgSExITEhMSExITERMSExITEhMSExI4EjgSExI4EjgSNxI4EjgSExITEjgSAA0FAAAAAAAAAAAAAAAA
+    service: switch.broadlink_send_packet_192_168_31_3
+'1544324100565':
+  alias: down
+  sequence:
+  - data:
+      packet:
+      - JgCMAJSVEjgSOBI4EhMSExETEhMSExI4EjgSOBITEhMSExITEhMSOBITEhISExITEjgSOBITEhMSOBI4EjgSNxITEhMSOBIABgiUlRI4EjgSOBITEhMSExITEhMSOBI3EjgSExITEhMSExITEjgSExITEhMSExI4EjcSExITEjgSOBI4EjgSExITEjgSAA0FAAAAAAAAAAAAAAAA
+    service: switch.broadlink_send_packet_192_168_31_3
+'1544324116218':
+  alias: left
+  sequence:
+  - data:
+      packet:
+      - JgCMAJOWEDoQOhA5ERQQFRAVEBYPFw46EDoRORAVEBUQFREUEBQRORAVEDoQFRAVETkQOhAVEBUQORAVEDoQOhAWDxUQOhEABgiTlxA6EDoQORAVEBUQFRAVEBUQOhA6EDoQFg8VEBQRFQ8VEDoQFg86EBUQFRA6EDoQFRAVEDkQFRA6EDoQFRAVEDoQAA0FAAAAAAAAAAAAAAAA
+    service: switch.broadlink_send_packet_192_168_31_3
+'1544324130517':
+  alias: right
+  sequence:
+  - data:
+      packet:
+      - JgCMAJSVEjgSOBI3EhMSExITEhMSExI4EjgSOBISEhMSExITEhMSExI4EhMSExITEjgSNxITEjgSExI4EjgSOBITEhMSNxIABgiUlRI2FDcSOBITEhMSExITEhMSOBI4EjcSExITEhMSExITEhMSOBITEhMSExI3EjgSExI4EhMTNxI4EjcSExITEjgSAA0FAAAAAAAAAAAAAAAA
+    service: switch.broadlink_send_packet_192_168_31_3
+'1544324142072':
+  alias: enter
+  sequence:
+  - data:
+      packet:
+      - JgCMAJOWETkQOhA6EBUQFRAVEBUQFRA6EDoQOREUERQQFRAVEBUQFRAVEBUQOhAVEDoQOhAVEDkRORA6EBUQOhAVEBUQOhAABgqSlxA6EDoQOhAVEBQRFBAVEBUQOhA6EDoQFRAVEBUQFRAVEBUQFRAVEDkQFRA6EDoQFRA6EDoQOhAVEDkRFBAVEDoQAA0FAAAAAAAAAAAAAAAA
+    service: switch.broadlink_send_packet_192_168_31_3
+'1544324160931':
+  alias: exit
+  sequence:
+  - data:
+      packet:
+      - JgCMAJOWETkQOhA6EBUQFRAVEBURFBA6EDkROREUERQRFBAVEBUQOhEUETkQOhAVEDkQFRAVEBUQOhAVEBUQOhAVEDoQOhAABgmUlhA6EDkQOhAVERQQFRAVEBUQOhA6EDoQFRAVDxUQFRAVEDoQFRA6EDoQFRE5EBUQFRAUETkQFRAVETkRFBA6EDoQAA0FAAAAAAAAAAAAAAAA
+    service: switch.broadlink_send_packet_192_168_31_3
+'1544325579252':
+  alias: power fan
+  sequence:
+  - data:
+      packet:
+      - JgC2ACoOKQ4OKikOKQ4OKg4pDioNKg4qDSopAAEdKQ4qDg0qKQ8pDg4pDioOKQ4qDSoOKikAARwpDykODSsoDygPDSsNKg0rDCsNKwwrJwABHycQKBALLCcRJxAMKwwsCywMLAssDCwnAAEeKBAnEAwsJxAnEQssDSoOKgwrDioLLCkAAR0nECkPDCsoECcQDCwLLAwsCywMKwwsJwABHycQJxELLCcQKBAMKwwsCywMLAwrDSsoAA0FAAA=
+    service: switch.broadlink_send_packet_192_168_31_3
+'1544325594668':
+  alias: speed fan
+  sequence:
+  - data:
+      packet:
+      - JgDQACoOKQ4OKikOKQ4OKg4pKg4NKg4qDSoOAAE4KQ4qDg0qKg4pDg4pDiopDg4qDSoOKg0AATgqDikODiopDioODSoOKSoODikOKg0qDgABOCkOKg4OKSoOKQ4OKQ4qKQ4OKg4pDioOAAE4KQ4pDg4qKQ4qDg0qDiopDg4pDioOKQ4AATgqDikODiopDioNDioOKSoODSoOKg0qDgABOCkOKg4OKSoOKQ4OKg0qKQ4OKg4pDioOAAE4KQ4qDg0qKQ4qDg4pDiopDg4qDSoOKg0ADQUAAAAAAAAAAA==
+    service: switch.broadlink_send_packet_192_168_31_3
+'1544325614415':
+  alias: timer fan
+  sequence:
+  - data:
+      packet:
+      - JgDQACkOKQ4OKikOKg4NKg4qDSopDw0qDSoOAAE4KQ8pDg4pKg4pDg4qDSoOKikODioNKg0AATkpDikPDSopDioODSoOKg0qKQ8NKg4qDQABOCoOKQ4OKikOKQ8NKg0qDiopDg4qDSoOAAE4KQ4qDg0qKg4pDg4qDSoOKikODSoOKg0AATkpDikPDSopDykODSoOKg0qKQ8NKg4qDQABOCoOKQ4OKikOKQ8NKg4qDSopDg4qDSoOAAE4KQ8pDg0rKQ4pDg4qDSoOKikODCwLLAwADQUAAAAAAAAAAA==
+    service: switch.broadlink_send_packet_192_168_31_3
+'1544325630107':
+  alias: swing
+  sequence:
+  - data:
+      packet:
+      - JgDqACkOKBANKikPJxAMKw4qCywOKg0qJxELAAE6KBAnEAwsJxAnEQssDCsMLAwrDCwnEAwAATonEScQDCsoECcQDCwLLAwsCywMLCcQDAABOicQKBALLCcRJxAMKwwsDCsMLAssKBALAAE7JxAnEAwsJxAoEAssDCwLLAwsCywnEAwAATooECcQDCwnECcRCywMKwwsDCsMLCcQDAABOicRKA8MKykPJxAOKg0qDioNKg4qKQ4NAAE5KQ4qDg0qKQ8pDg4qDSoOKQ4qDSoqDg0AATkpDikPDSopDykODikOKg0qDioNKioODQANBQAAAAAAAAAAAAAAAAAA
+    service: switch.broadlink_send_packet_192_168_31_3
+'1544347547780':
+  alias: Weather forcast morning
+  sequence:
+  - data_template:
+      message: "Sau đây là thông báo thời tiết. {% if is_state('sensor.dark_sky_icon',\
+        \ 'partly-cloudy-day') %} Hiện tại trời ít mây. {% elif is_state('sensor.dark_sky_icon',\
+        \ 'clear-day') %} Hôm nay trời đẹp, bạn có thể yên tâm với các hoạt động ngoài\
+        \ trời. {% elif is_state('sensor.dark_sky_icon', 'clear-night') %} Đêm nay\
+        \ trời đẹp. {% elif is_state('sensor.dark_sky_icon', 'rain') %} Khả năng trời\
+        \ mưa rất cao, bạn nên đem theo dù hoặc áo mưa nếu cần di chuyển ra ngoài.\
+        \ {% elif is_state('sensor.dark_sky_icon', 'wind') %} Hôm nay trời nhiều gió,\
+        \ bạn nhớ đóng cửa sổ trước khi đi ra ngoài. {% elif is_state('sensor.dark_sky_icon',\
+        \ 'cloudy') %} Trời nhiều mây, bạn nhớ đem theo dù hoặc áo mưa nếu ra ngoài,\
+        \ đề phòng trời mưa đột ngột. {% elif is_state('sensor.dark_sky_icon','partly-cloudy-night')\
+        \ %} Hiện tại bên ngoài trời nhiều mây. {% elif is_state('sensor.dark_sky_icon',\
+        \ 'fog') %} Hiện tại trời nhiều sương mù. {% endif %} Nhiệt độ bên ngoài hiện\
+        \ là {{states('sensor.dark_sky_temperature') }} độ xê, độ ẩm là {{states('sensor.dark_sky_humidity')|int\
+        \ }} phần trăm.'\n  "
+    service: tts.google_say
+    entity_id: media_player.phong_khach
+'1544354165159':
+  alias: Gateway
+  sequence:
+  - data_template:
+      gw_mac: 7c:49:eb:19:0X:XX
+      ringtone_id: '{{ states.input_number.slider4.state|int }}'
+      ringtone_vol: '{{ states.input_number.slider3.state|int }}'
+    service: xiaomi_aqara.play_ringtone
+

@@ -1,0 +1,755 @@
+- id: '1548054508026'
+  alias: Arlarm clock
+  trigger:
+  - platform: template
+    value_template: '{{ states.sensor.time.state == states.sensor.alarm_time.state }}'
+  condition:
+  - condition: or
+    conditions:
+    - condition: and
+      conditions:
+      - condition: state
+        entity_id: input_boolean.alarmweekday
+        state: 'on'
+      - condition: time
+        weekday:
+        - mon
+        - tue
+        - wed
+        - thu
+        - fri
+    - condition: state
+      entity_id: input_boolean.alarmweekday
+      state: 'off'
+  action:
+  - data:
+      gw_mac: 7c:49:eb:19:0X:XX
+      ringtone_id: '{{ states.input_number.slider4.state|int }}'
+      ringtone_vol: '{{ states.input_number.slider3.state|int }}'
+    service: script.1544354165159
+- id: '1548066638956'
+  alias: Auto turn on light nt
+  trigger:
+  - at: '17:35'
+    platform: time
+  condition: []
+  action:
+  - entity_id: switch.ligth_nt
+    service: switch.turn_on
+- id: '1548066684976'
+  alias: Auto turn off light nt
+  trigger:
+  - at: '18:45'
+    platform: time
+  condition: []
+  action:
+  - service: switch.turn_off
+    entity_id: switch.ligth_nt
+- id: '1548067153477'
+  alias: Auto turn on light living
+  trigger:
+  - at: '17:31'
+    platform: time
+  condition: []
+  action:
+  - entity_id: switch.living_room_light
+    service: switch.turn_on
+- id: '1548067697771'
+  alias: Auto turn on light kitchen night
+  trigger:
+  - entity_id: binary_sensor.door_window_sensor_158d000288d30c
+    from: 'off'
+    platform: state
+    to: 'on'
+  condition:
+  - after: '18:00'
+    before: '19:00'
+    condition: time
+  action:
+  - service: light.turn_on
+    entity_id: light.gateway_light_7c49eb1a6da8
+- id: '1548068127298'
+  alias: Turn off light hub
+  trigger:
+  - entity_id: binary_sensor.door_window_sensor_158d000288d30c
+    from: 'on'
+    platform: state
+    to: 'off'
+  condition: []
+  action:
+  - entity_id: light.gateway_light_7c49eb1a6da8
+    service: light.turn_off
+- id: '1548068667407'
+  alias: auto turn on light kitchen morning
+  trigger:
+  - entity_id: binary_sensor.door_window_sensor_158d000288d30c
+    from: 'off'
+    platform: state
+    to: 'on'
+  condition:
+  - after: '4:00'
+    before: '5:10'
+    condition: time
+  action:
+  - service: switch.turn_on
+    entity_id: switch.kitchen_light
+- id: '1548068741642'
+  alias: 'auto turn off light kitchen morning '
+  trigger:
+  - entity_id: binary_sensor.door_window_sensor_158d000288d30c
+    from: 'on'
+    platform: state
+    to: 'off'
+  condition:
+  - after: '4:00'
+    before: '5:10'
+    condition: time
+  action:
+  - service: switch.turn_off
+    entity_id: switch.kitchen_light
+- id: '1548069026236'
+  alias: Weather forcast
+  trigger:
+  - at: '18:30'
+    platform: time
+  condition: []
+  action:
+  - service: script.1544347547780
+- id: '1548073562502'
+  alias: weather forcast morning
+  trigger:
+  - at: '5:15'
+    platform: time
+  condition: []
+  action:
+  - service: script.1544347547780
+- id: '1548073615364'
+  alias: Weather forcast trua
+  trigger:
+  - at: '11:00'
+    platform: time
+  condition: []
+  action:
+  - service: script.1544347547780
+- id: '1548074742594'
+  alias: auto turn light nt morning
+  trigger:
+  - at: '4:50'
+    platform: time
+  condition: []
+  action:
+  - service: switch.turn_on
+    entity_id: switch.ligth_nt
+- id: '1548074810567'
+  alias: auto turn off light nt morning
+  trigger:
+  - at: '5:30'
+    platform: time
+  condition: []
+  action:
+  - service: switch.turn_off
+    entity_id: switch.ligth_nt
+- id: '1548245583977'
+  alias: auto turn on fan cpu
+  trigger:
+  - above: '42'
+    entity_id: sensor.cpu_temperature
+    platform: numeric_state
+  condition:
+  - after: '5:00'
+    before: '20:00'
+    condition: time
+  action:
+  - entity_id: switch.fan_cpu
+    service: switch.turn_on
+- id: '1548245773539'
+  alias: Auto turn off fan cpu
+  trigger:
+  - below: '42'
+    entity_id: sensor.cpu_temperature
+    platform: numeric_state
+  condition:
+  - after: '5:00'
+    before: '20:00'
+    condition: time
+  action:
+  - entity_id: switch.fan_cpu
+    service: switch.turn_off
+- id: '1548755041186'
+  alias: Turn on fan 662
+  trigger:
+  - event_data:
+      click_type: long_click_press
+      entity_id: binary_sensor.switch_158d00026b8662
+    event_type: xiaomi_aqara.click
+    platform: event
+  condition:
+  - after: '7:00'
+    before: '17:00'
+    condition: time
+  action:
+  - data:
+      packet:
+      - JgC2ACoOKQ4OKikOKQ4OKg4pDioNKg4qDSopAAEdKQ4qDg0qKQ8pDg4pDioOKQ4qDSoOKikAARwpDykODSsoDygPDSsNKg0rDCsNKwwrJwABHycQKBALLCcRJxAMKwwsCywMLAssDCwnAAEeKBAnEAwsJxAnEQssDSoOKgwrDioLLCkAAR0nECkPDCsoECcQDCwLLAwsCywMKwwsJwABHycQJxELLCcQKBAMKwwsCywMLAwrDSsoAA0FAAA=
+    service: switch.broadlink_send_packet_192_168_31_3
+- id: '1548755185105'
+  alias: Speed fan 662
+  trigger:
+  - event_data:
+      click_type: double
+      entity_id: binary_sensor.switch_158d00026b8662
+    event_type: xiaomi_aqara.click
+    platform: event
+  condition:
+  - after: '7:00'
+    before: '17:00'
+    condition: time
+  action:
+  - data:
+      packet:
+      - JgDQACoOKQ4OKikOKQ4OKg4pKg4NKg4qDSoOAAE4KQ4qDg0qKg4pDg4pDiopDg4qDSoOKg0AATgqDikODiopDioODSoOKSoODikOKg0qDgABOCkOKg4OKSoOKQ4OKQ4qKQ4OKg4pDioOAAE4KQ4pDg4qKQ4qDg0qDiopDg4pDioOKQ4AATgqDikODiopDioNDioOKSoODSoOKg0qDgABOCkOKg4OKSoOKQ4OKg0qKQ4OKg4pDioOAAE4KQ4qDg0qKQ4qDg4pDiopDg4qDSoOKg0ADQUAAAAAAAAAAA==
+    service: switch.broadlink_send_packet_192_168_31_3
+- id: '1548755269342'
+  alias: Swing round 662
+  trigger:
+  - event_data:
+      click_type: single
+      entity_id: binary_sensor.switch_158d00026b8662
+    event_type: xiaomi_aqara.click
+    platform: event
+  condition:
+  - after: '7:00'
+    before: '17:00'
+    condition: time
+  action:
+  - data:
+      packet:
+      - JgDqACkOKBANKikPJxAMKw4qCywOKg0qJxELAAE6KBAnEAwsJxAnEQssDCsMLAwrDCwnEAwAATonEScQDCsoECcQDCwLLAwsCywMLCcQDAABOicQKBALLCcRJxAMKwwsDCsMLAssKBALAAE7JxAnEAwsJxAoEAssDCwLLAwsCywnEAwAATooECcQDCwnECcRCywMKwwsDCsMLCcQDAABOicRKA8MKykPJxAOKg0qDioNKg4qKQ4NAAE5KQ4qDg0qKQ8pDg4qDSoOKQ4qDSoqDg0AATkpDikPDSopDykODikOKg0qDioNKioODQANBQAAAAAAAAAAAAAAAAAA
+    service: switch.broadlink_send_packet_192_168_31_3
+- id: '1548755549748'
+  alias: update state switch living 1 on restart
+  trigger:
+  - event: start
+    platform: homeassistant
+  action:
+  - data:
+      payload: ''
+      topic: cmnd/living/POWER1
+    service: mqtt.publish
+- id: '1548756223222'
+  alias: auto update state living 2 on restart
+  trigger:
+  - event: start
+    platform: homeassistant
+  action:
+  - data:
+      payload: ''
+      topic: cmnd/living/POWER2
+    service: mqtt.publish
+- id: '1548756433637'
+  alias: auto update state nt 1 on restart
+  trigger:
+  - event: start
+    platform: homeassistant
+  action:
+  - data:
+      payload: ''
+      topic: cmnd/nt/POWER1
+    service: mqtt.publish
+- id: '1548756556477'
+  alias: auto update state nt 2 on restart
+  trigger:
+  - event: start
+    platform: homeassistant
+  action:
+  - data:
+      payload: ''
+      topic: cmnd/nt/POWER2
+    service: mqtt.publish
+- id: '1548756624982'
+  alias: auto update state kitchen 1 on restart
+  trigger:
+  - event: start
+    platform: homeassistant
+  action:
+  - data:
+      payload: ''
+      topic: cmnd/kitchen/POWER1
+    service: mqtt.publish
+- id: '1548756696292'
+  alias: auto update state kitchen 2 on restart
+  trigger:
+  - event: start
+    platform: homeassistant
+  action:
+  - data:
+      payload: ''
+      topic: cmnd/kitchen/POWER2
+    service: mqtt.publish
+- id: '1548756811709'
+  alias: auto state gara on restart
+  trigger:
+  - event: start
+    platform: homeassistant
+  action:
+  - data:
+      payload: ''
+      topic: cmnd/gara/POWER
+    service: mqtt.publish
+- id: '1548756895923'
+  alias: auto update state bedroom on restart
+  trigger:
+  - event: start
+    platform: homeassistant
+  action:
+  - data:
+      payload: ''
+      topic: cmnd/bedroom1/POWER
+    service: mqtt.publish
+- id: '1548756957848'
+  alias: auto update state fan on restart
+  trigger:
+  - event: start
+    platform: homeassistant
+  action:
+  - data:
+      payload: ''
+      topic: fan/switch1
+    service: mqtt.publish
+- id: '1548760972825'
+  alias: Long click turn on light living 875 sang
+  trigger:
+  - event_data:
+      click_type: long_click_press
+      entity_id: binary_sensor.switch_158d00026b8875
+    event_type: xiaomi_aqara.click
+    platform: event
+  condition:
+  - condition: state
+    entity_id: switch.living_room_light
+    state: 'off'
+  - after: '4:00'
+    before: '6:00'
+    condition: time
+  action:
+  - entity_id: switch.living_room_light
+    service: switch.turn_on
+- id: '1548761137433'
+  alias: Long click turn off light living 875 sang
+  trigger:
+  - event_data:
+      click_type: long_click_press
+      entity_id: binary_sensor.switch_158d00026b8875
+    event_type: xiaomi_aqara.click
+    platform: event
+  condition:
+  - condition: state
+    entity_id: switch.living_room_light
+    state: 'on'
+  - after: '4:00'
+    before: '6:00'
+    condition: time
+  action:
+  - entity_id: switch.living_room_light
+    service: switch.turn_off
+- id: '1548761238996'
+  alias: Double turn off light nt outdoor 875 sang
+  trigger:
+  - event_data:
+      click_type: double
+      entity_id: binary_sensor.switch_158d00026b8875
+    event_type: xiaomi_aqara.click
+    platform: event
+  condition:
+  - condition: state
+    entity_id: switch.ligth_outdoor_2
+    state: 'on'
+  - after: '4:00'
+    before: '6:00'
+    condition: time
+  action:
+  - entity_id: switch.ligth_outdoor_2
+    service: switch.turn_off
+- id: '1548761372359'
+  alias: Double turn on light nt outdoor 875 sang
+  trigger:
+  - event_data:
+      click_type: double
+      entity_id: binary_sensor.switch_158d00026b8875
+    event_type: xiaomi_aqara.click
+    platform: event
+  condition:
+  - condition: state
+    entity_id: switch.ligth_outdoor_2
+    state: 'off'
+  - after: '4:00'
+    before: '6:00'
+    condition: time
+  action:
+  - entity_id: switch.ligth_outdoor_2
+    service: switch.turn_on
+- id: '1548766784167'
+  alias: turn off fan night
+  trigger:
+  - at: '20:00'
+    platform: time
+  condition:
+  - condition: state
+    entity_id: switch.fan_cpu
+    state: 'on'
+  action:
+  - service: switch.turn_off
+    entity_id: switch.fan_cpu
+- id: '1548914419258'
+  alias: Long click turn on power tivi 875
+  trigger:
+  - event_data:
+      click_type: long_click_press
+      entity_id: binary_sensor.switch_158d00026b8875
+    event_type: xiaomi_aqara.click
+    platform: event
+  condition:
+  - condition: state
+    entity_id: switch.power_strip
+    state: 'off'
+  - after: '6:30'
+    before: '17:00'
+    condition: time
+  action:
+  - entity_id: switch.power_strip
+    service: switch.turn_on
+- id: '1548914558595'
+  alias: Long click turn off power tivi 875
+  trigger:
+  - event_data:
+      click_type: long_click_press
+      entity_id: binary_sensor.switch_158d00026b8875
+    event_type: xiaomi_aqara.click
+    platform: event
+  condition:
+  - condition: state
+    entity_id: switch.power_strip
+    state: 'on'
+  - after: '6:30'
+    before: '17:00'
+    condition: time
+  action:
+  - entity_id: switch.power_strip
+    service: switch.turn_off
+- id: '1548914634662'
+  alias: Double turn on tivi 875
+  trigger:
+  - event_data:
+      click_type: double
+      entity_id: binary_sensor.switch_158d00026b8875
+    event_type: xiaomi_aqara.click
+    platform: event
+  condition:
+  - after: '6:30'
+    before: '17:00'
+    condition: time
+  action:
+  - data:
+      packet:
+      - JgDSAJSVEjgSOBI4EhMSExITEhMSEhI4EjgSOBITEhMSExITEhMSExI3ExISExITEhMSExITEjgSExI4EjgSNxI4EjgSOBIABgiUlRI4EjgSNxITExISExITEhMSOBI4EjgSExITEhMSExISEhMSOBITEhMSExITEhMSExI4EhMSNxI4EjgSOBI4EjgSAAYHlJUSOBI4EjgSExITEhMRExITEjgSOBI4EhMSExITEhMSExITETgSExITEhMSExITEhMSOBITEjcSOBI4EjgSOBI4EgANBQAAAAAAAA==
+    service: switch.broadlink_send_packet_192_168_31_3
+- id: '1548915375036'
+  alias: Double click turn on light kitchen 875 toi
+  trigger:
+  - event_data:
+      click_type: double
+      entity_id: binary_sensor.switch_158d00026b8875
+    event_type: xiaomi_aqara.click
+    platform: event
+  condition:
+  - condition: state
+    entity_id: switch.kitchen_light
+    state: 'off'
+  - after: '17:01'
+    before: '20:00'
+    condition: time
+  action:
+  - entity_id: switch.kitchen_light
+    service: switch.turn_on
+- id: '1548915556545'
+  alias: Double turn off light kitchen 875 toi
+  trigger:
+  - event_data:
+      click_type: double
+      entity_id: binary_sensor.switch_158d00026b8875
+    event_type: xiaomi_aqara.click
+    platform: event
+  condition:
+  - condition: state
+    entity_id: switch.kitchen_light
+    state: 'on'
+  - after: '17:01'
+    before: '20:00'
+    condition: time
+  action:
+  - entity_id: switch.kitchen_light
+    service: switch.turn_off
+- id: '1548915665216'
+  alias: Long click turn on light living 875 toi
+  trigger:
+  - event_data:
+      click_type: long_click_press
+      entity_id: binary_sensor.switch_158d00026b8875
+    event_type: xiaomi_aqara.click
+    platform: event
+  condition:
+  - condition: state
+    entity_id: switch.living_room_light
+    state: 'off'
+  - after: '17:01'
+    before: '20:00'
+    condition: time
+  action:
+  - entity_id: switch.living_room_light
+    service: switch.turn_on
+- id: '1548915807716'
+  alias: Long click turn off light living 875 toi
+  trigger:
+  - event_data:
+      click_type: long_click_press
+      entity_id: binary_sensor.switch_158d00026b8875
+    event_type: xiaomi_aqara.click
+    platform: event
+  condition:
+  - condition: state
+    entity_id: switch.living_room_light
+    state: 'on'
+  - after: '17:01'
+    before: '20:00'
+    condition: time
+  action:
+  - entity_id: switch.living_room_light
+    service: switch.turn_off
+- id: '1548917535074'
+  alias: Single click turn on light  NT 662 toi
+  trigger:
+  - event_data:
+      click_type: single
+      entity_id: binary_sensor.switch_158d00026b8662
+    event_type: xiaomi_aqara.click
+    platform: event
+  condition:
+  - condition: state
+    entity_id: switch.ligth_nt
+    state: 'off'
+  - after: '18:01'
+    before: '20:00'
+    condition: time
+  action:
+  - service: switch.turn_on
+    entity_id: switch.ligth_nt
+- id: '1548917629845'
+  alias: Single click turn off ligth NT 662 toi
+  trigger:
+  - event_data:
+      click_type: single
+      entity_id: binary_sensor.switch_158d00026b8662
+    event_type: xiaomi_aqara.click
+    platform: event
+  condition:
+  - condition: state
+    entity_id: switch.ligth_nt
+    state: 'on'
+  - after: '18:01'
+    before: '20:00'
+    condition: time
+  action:
+  - service: switch.turn_off
+    entity_id: switch.ligth_nt
+- id: '1548917733164'
+  alias: Double click turn on light NT outdoor 662 toi
+  trigger:
+  - event_data:
+      click_type: double
+      entity_id: binary_sensor.switch_158d00026b8662
+    event_type: xiaomi_aqara.click
+    platform: event
+  condition:
+  - condition: state
+    entity_id: switch.ligth_outdoor_2
+    state: 'off'
+  - after: '18:01'
+    before: '20:00'
+    condition: time
+  action:
+  - service: switch.turn_on
+    entity_id: switch.ligth_outdoor_2
+- id: '1548927585404'
+  alias: Double turn off light NT outdoor 662 toi
+  trigger:
+  - event_data:
+      click_type: double
+      entity_id: binary_sensor.switch_158d00026b8662
+    event_type: xiaomi_aqara.click
+    platform: event
+  condition:
+  - condition: state
+    entity_id: switch.ligth_outdoor_2
+    state: 'on'
+  - after: '18:01'
+    before: '20:00'
+    condition: time
+  action:
+  - service: switch.turn_off
+    entity_id: switch.ligth_outdoor_2
+- id: '1548928636284'
+  alias: Long click turn on light living outdoor 662 toi
+  trigger:
+  - event_data:
+      click_type: long_click_press
+      entity_id: binary_sensor.switch_158d00026b8662
+    event_type: xiaomi_aqara.click
+    platform: event
+  condition:
+  - condition: state
+    entity_id: switch.light_outdoor_1
+    state: 'off'
+  - after: '18:01'
+    before: '20:00'
+    condition: time
+  action:
+  - service: switch.turn_on
+    entity_id: switch.light_outdoor_1
+- id: '1548928750586'
+  alias: Long click turn off light living outdoor 662 toi
+  trigger:
+  - event_data:
+      click_type: long_click_press
+      entity_id: binary_sensor.switch_158d00026b8662
+    event_type: xiaomi_aqara.click
+    platform: event
+  condition:
+  - condition: state
+    entity_id: switch.light_outdoor_1
+    state: 'on'
+  - after: '18:01'
+    before: '20:00'
+    condition: time
+  action:
+  - service: switch.turn_off
+    entity_id: switch.light_outdoor_1
+- id: '1548931069741'
+  alias: Single click turn on light NT 662 sang
+  trigger:
+  - event_data:
+      click_type: single
+      entity_id: binary_sensor.switch_158d00026b8662
+    event_type: xiaomi_aqara.click
+    platform: event
+  condition:
+  - condition: state
+    entity_id: switch.ligth_nt
+    state: 'off'
+  - after: '4:00'
+    before: '5:45'
+    condition: time
+  action:
+  - service: switch.turn_on
+    entity_id: switch.ligth_nt
+- id: '1548931199103'
+  alias: Single click turn off light NT 662 sang
+  trigger:
+  - event_data:
+      click_type: single
+      entity_id: binary_sensor.switch_158d00026b8662
+    event_type: xiaomi_aqara.click
+    platform: event
+  condition:
+  - condition: state
+    entity_id: switch.ligth_nt
+    state: 'on'
+  - after: '4:00'
+    before: '5:45'
+    condition: time
+  action:
+  - service: switch.turn_off
+    entity_id: switch.ligth_nt
+- id: '1548931289808'
+  alias: Double click turn on light kitchen 662 sang
+  trigger:
+  - event_data:
+      click_type: double
+      entity_id: binary_sensor.switch_158d00026b8662
+    event_type: xiaomi_aqara.click
+    platform: event
+  condition:
+  - condition: state
+    entity_id: switch.kitchen_light
+    state: 'off'
+  - after: '4:00'
+    before: '5:45'
+    condition: time
+  action:
+  - service: switch.turn_on
+    entity_id: switch.kitchen_light
+- id: '1548931834230'
+  alias: Double turn off light kitchen 662 sang
+  trigger:
+  - event_data:
+      click_type: double
+      entity_id: binary_sensor.switch_158d00026b8662
+    event_type: xiaomi_aqara.click
+    platform: event
+  condition:
+  - condition: state
+    entity_id: switch.kitchen_light
+    state: 'on'
+  - after: '4:00'
+    before: '5:45'
+    condition: time
+  action:
+  - service: switch.turn_off
+    entity_id: switch.kitchen_light
+- id: '1548932053752'
+  alias: Long click turn on light living outdoor 662 sang
+  trigger:
+  - event_data:
+      click_type: long_click_press
+      entity_id: binary_sensor.switch_158d00026b8662
+    event_type: xiaomi_aqara.click
+    platform: event
+  condition:
+  - condition: state
+    entity_id: switch.light_outdoor_1
+    state: 'off'
+  - after: '4:00'
+    before: '5:45'
+    condition: time
+  action:
+  - service: switch.turn_on
+    entity_id: switch.light_outdoor_1
+- id: '1548932151490'
+  alias: Long click turn off light lving outdoor 662 sang
+  trigger:
+  - event_data:
+      click_type: long_click_press
+      entity_id: binary_sensor.switch_158d00026b8662
+    event_type: xiaomi_aqara.click
+    platform: event
+  condition:
+  - condition: state
+    entity_id: switch.light_outdoor_1
+    state: 'on'
+  - after: '4:00'
+    before: '5:45'
+    condition: time
+  action:
+  - service: switch.turn_off
+    entity_id: switch.light_outdoor_1
+- id: '1548932323901'
+  alias: Turn off light hub kitchen
+  trigger:
+  - at: '18:00'
+    platform: time
+  condition:
+  - condition: state
+    entity_id: light.gateway_light_7c49eb1a6da8
+    state: 'on'
+  action:
+  - service: light.turn_off
+    entity_id: light.gateway_light_7c49eb1a6da8

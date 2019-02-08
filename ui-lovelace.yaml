@@ -1,0 +1,1267 @@
+resources:
+  - url: /local/custom_ui/weather-card.js
+    type: js
+  - url: /local/card-tools.js
+    type: js
+  - url: /local/popup-card.js
+    type: js
+  - url: /local/layout-card.js
+    type: js
+  - url: /local/card-modder.js
+    type: js
+  - url: /local/mini-graph-card-bundle.js?v=0.1.0
+    type: module
+  - url: /local/vertical-stack-in-card.js?v=0.0.9
+    type: js
+title: PM Home
+background: center / cover no-repeat url("/local/pmhome.jpg") fixed
+views:
+  - title: default_view
+    icon: mdi:home
+    cards:
+###Home###
+      - type: custom:card-modder
+        style:
+          background-color: rgba(0,0,0,0.2)
+          color: rgb(0, 0, 0)
+          box-shadow: 3px 3px rgba(0,0,0,0.6)
+        card:
+          type: custom:vertical-stack-in-card
+          title: HỆ THỐNG ĐÈN
+          cards:
+            - type: custom:card-modder
+              style:
+                background-color: rgba(0,0,0,0.2)
+                color: rgb(255, 255, 255)
+                box-shadow: 3px 3px rgba(0,0,0,0.6)
+              card:
+                type: custom:vertical-stack-in-card
+                title: Phòng Khách
+                cards:
+                  - type: custom:card-modder
+                    style:
+                      background-color: rgba(0,0,0,0.2)
+                      background-size: 100% 100%
+                      border-radius: 20px
+                      border: solid 1px rgba(100,100,100,0.3)
+                      color: rgb(255, 255, 255)
+                      box-shadow: 3px 3px rgba(0,0,0,0.6)
+                    card:
+                      type: entities
+                      show_header_toggle: false
+                      entities:
+                        - entity: switch.living_room_light
+                          name: Đèn trong
+                        - entity: switch.light_outdoor_1
+                          name: Đèn ngoài
+            - type: custom:card-modder
+              style:
+                background-color: rgba(0,0,0,0.2)
+                background-size: 100% 100%
+                color: rgb(255, 255, 255)
+                box-shadow: 3px 3px rgba(0,0,0,0.6)
+              card:
+                type: custom:vertical-stack-in-card
+                title: Nhà Trên
+                cards:
+                  - type: custom:card-modder
+                    style:
+                      background-color: rgba(0,0,0,0.2)
+                      background-size: 100% 100%
+                      border-radius: 20px
+                      border: solid 1px rgba(100,100,100,0.3)
+                      color: rgb(255, 255, 255)
+                      box-shadow: 3px 3px rgba(0,0,0,0.6)
+                    card:
+                      type: entities
+                      show_header_toggle: false
+                      entities:
+                        - entity: switch.ligth_nt
+                          name: Đèn trong
+                        - entity: switch.ligth_outdoor_2
+                          name: Đèn ngoài
+            - type: custom:card-modder
+              style:
+                background-color: rgba(0,0,0,0.2)
+                background-size: 100% 100%
+                color: rgb(255, 255, 255)
+                box-shadow: 3px 3px rgba(0,0,0,0.6)
+              card:
+                type: custom:vertical-stack-in-card
+                title: Nhà Bếp
+                cards:
+                  - type: custom:card-modder
+                    style:
+                      background-color: rgba(0,0,0,0.2)
+                      background-size: 100% 100%
+                      border-radius: 20px
+                      border: solid 1px rgba(100,100,100,0.3)
+                      color: rgb(255, 255, 255)
+                      box-shadow: 3px 3px rgba(0,0,0,0.6)
+                    card:
+                      type: entities
+                      show_header_toggle: false
+                      entities:
+                        - entity: switch.kitchen_light
+                          name: Đèn trong
+                        - entity: switch.kitchen_light_outdoor
+                          name: Đèn ngoài
+            - type: custom:card-modder
+              style:
+                background-color: rgba(0,0,0,0.2)
+                background-size: 100% 100%
+                color: rgb(255, 255, 255)
+                box-shadow: 3px 3px rgba(0,0,0,0.6)
+              card:
+                type: custom:vertical-stack-in-card
+                title: Phòng Ngủ
+                cards:
+                  - type: custom:card-modder
+                    style:
+                      background-color: rgba(0,0,0,0.2)
+                      background-size: 100% 100%
+                      border-radius: 20px
+                      border: solid 1px rgba(100,100,100,0.3)
+                      color: rgb(255, 255, 255)
+                      box-shadow: 3px 3px rgba(0,0,0,0.6)
+                    card:
+                      type: entities
+                      show_header_toggle: false
+                      entities:
+                        - entity: switch.bedroom_1_light
+                          name: Đèn ngủ
+            - type: custom:card-modder
+              style:
+                background-color: rgba(0,0,0,0.2)
+                background-size: 100% 100%
+                color: rgb(255, 255, 255)
+                box-shadow: 3px 3px rgba(0,0,0,0.6)
+              card:
+                type: custom:vertical-stack-in-card
+                title:  Ga ra
+                cards:
+                  - type: custom:card-modder
+                    style:
+                      background-color: rgba(0,0,0,0.2)
+                      background-size: 100% 100%
+                      border-radius: 20px
+                      border: solid 1px rgba(100,100,100,0.3)
+                      color: rgb(255, 255, 255)
+                      box-shadow: 3px 3px rgba(0,0,0,0.6)
+                    card:
+                      type: entities
+                      show_header_toggle: false
+                      entities:
+                        - entity: switch.ga_ra
+                          name: Đèn ga ra
+      - type: custom:card-modder
+        style:
+          background-color: rgba(0,0,0,0.2)
+          color: rgb(0, 0, 0)
+          box-shadow: 3px 3px rgba(0,0,0,0.6)
+        card:
+          type: custom:vertical-stack-in-card
+          title: HỆ THỐNG CẢM BIẾN
+          cards:
+            - type: custom:card-modder
+              style:
+                background-color: rgba(0,0,0,0.2)
+                color: rgb(255, 255, 255)
+                box-shadow: 3px 3px rgba(0,0,0,0.6)
+              card:
+                type: custom:vertical-stack-in-card
+                title: Phòng Khách
+                cards:
+                   - type: horizontal-stack
+                     cards:
+                      - type: custom:card-modder
+                        style:
+                          background-color: rgba(0,0,0,0.2)
+                          background-size: 100% 100%
+                          border-radius: 20px
+                          border: solid 1px rgba(100,100,100,0.3)
+                          color: rgb(255, 255, 255)
+                          box-shadow: 3px 3px rgba(0,0,0,0.6)
+                        card:
+                          type: entities
+                          entities:
+                           - entity: sensor.temperature_158d0001e6bbeb
+                             name: Nhiệt độ
+                      - type: custom:card-modder
+                        style:
+                          background-repeat: no-repeat
+                          background-color: rgba(0,0,0,0.2)
+                          background-size: 100% 100%
+                          border-radius: 20px
+                          border: solid 1px rgba(100,100,100,0.3)
+                          color: rgb(255, 255, 255)
+                          box-shadow: 3px 3px rgba(0,0,0,0.6)
+                        card:
+                          type: entities
+                          entities:
+                           - entity: sensor.humidity_158d0001e6bbeb
+                             name: Độ ẩm
+                   - type: horizontal-stack
+                     cards:
+                      - type: custom:card-modder
+                        style:
+                          background-color: rgba(0,0,0,0.2)
+                          background-size: 100% 100%
+                          border-radius: 20px
+                          border: solid 1px rgba(100,100,100,0.3)
+                          color: rgb(255, 255, 255)
+                          box-shadow: 3px 3px rgba(0,0,0,0.6)
+                        card:
+                          type: entities
+                          show_header_toggle: false
+                          entities:
+                           - entity: binary_sensor.door_window_sensor_158d00023ed625
+                             name: Cửa 
+                             icon: mdi:door
+                      - type: custom:card-modder
+                        style:
+                          background-color: rgba(0,0,0,0.2)
+                          background-size: 100% 100%
+                          border-radius: 20px
+                          border: solid 1px rgba(100,100,100,0.3)
+                          color: rgb(255, 255, 255)
+                          box-shadow: 3px 3px rgba(0,0,0,0.6)
+                        card:
+                          type: entities
+                          show_header_toggle: false
+                          entities:
+                            - entity: binary_sensor.motion_sensor_158d00027a31f0
+                              name: Chuyển động
+                              icon: mdi:run
+            - type: custom:card-modder
+              style:
+                background-color: rgba(0,0,0,0.2)
+                color: rgb(255, 255, 255)
+                box-shadow: 3px 3px rgba(0,0,0,0.6)
+              card:
+                type: custom:vertical-stack-in-card
+                title: Nhà Bếp
+                cards:
+                   - type: horizontal-stack
+                     cards:
+                      - type: custom:card-modder
+                        style:
+                          background-color: rgba(0,0,0,0.2)
+                          background-size: 100% 100%
+                          border-radius: 20px
+                          border: solid 1px rgba(100,100,100,0.3)
+                          color: rgb(255, 255, 255)
+                          box-shadow: 3px 3px rgba(0,0,0,0.6)
+                        card:
+                          type: entities
+                          show_header_toggle: false
+                          entities:
+                           - entity: binary_sensor.door_window_sensor_158d000288d30c
+                             name: Cửa 
+                             icon: mdi:door
+                      - type: custom:card-modder
+                        style:
+                          background-color: rgba(0,0,0,0.2)
+                          background-size: 100% 100%
+                          border-radius: 20px
+                          border: solid 1px rgba(100,100,100,0.3)
+                          color: rgb(255, 255, 255)
+                          box-shadow: 3px 3px rgba(0,0,0,0.6)
+                        card:
+                          type: entities
+                          show_header_toggle: false
+                          entities:
+                           - entity: binary_sensor.motion_sensor_158d000223ee4a
+                             name: Chuyển động
+      - type: custom:card-modder
+        style:
+          background-color: rgba(0,0,0,0.2)
+          color: rgb(255, 255, 255)
+          box-shadow: 3px 3px rgba(0,0,0,0.6)
+        card:
+          type: custom:vertical-stack-in-card
+          title: Khác
+          cards:
+            - type: horizontal-stack
+              cards:
+                - type: custom:card-modder
+                  style:
+                    background-color: rgba(0,0,0,0.3)
+                    background-size: 100% 100%
+                    --paper-item-icon-color: pink
+                    border-radius: 20px
+                    border: solid 1px rgba(100,100,100,0.3)
+                    color: rgb(255, 255, 255)
+                    box-shadow: 3px 3px rgba(0,0,0,0.6)
+                  card:
+                    type: glance
+                    show_name: true
+                    show_state: true
+                    columns: 1
+                    entities:
+                      - entity: light.gateway_light_7c49eb190942
+                        icon: mdi:ceiling-light
+                        name: Hub Living
+                - type: custom:card-modder
+                  style:
+                    background-color: rgba(0,0,0,0.3)
+                    background-size: 100% 100%
+                    border-radius: 20px
+                    border: solid 1px rgba(100,100,100,0.3)
+                    color: rgb(255, 255, 255)
+                    box-shadow: 3px 3px rgba(0,0,0,0.6)
+                  card:
+                    type: glance
+                    show_name: true
+                    show_state: true
+                    columns: 1
+                    entities:
+                      - entity: light.gateway_light_7c49eb1a6da8
+                        tap_action:
+                          action: toggle
+                        icon: mdi:ceiling-light
+                        name: Hub Kitchen
+                - type: custom:card-modder
+                  style:
+                    background-color: rgba(0,0,0,0.3)
+                    background-size: 100% 100%
+                    --paper-item-icon-color: red
+                    border-radius: 20px
+                    border: solid 1px rgba(100,100,100,0.3)
+                    color: rgb(255, 255, 255)
+                    box-shadow: 3px 3px rgba(0,0,0,0.6)
+                  card:
+                    type: glance
+                    show_name: true
+                    show_state: true
+                    columns: 1
+                    entities:
+                      - entity:  switch.power_strip
+                        tap_action: 
+                          action: toggle
+                        icon: mdi:power
+                        name: Nguồn Tivi
+                - type: custom:card-modder
+                  style:
+                    background-color: rgba(0,0,0,0.3)
+                    --paper-item-icon-color: green
+                    background-size: 100% 100%
+                    border-radius: 20px
+                    border: solid 1px rgba(100,100,100,0.3)
+                    color: rgb(255, 255, 255)
+                    box-shadow: 3px 3px rgba(0,0,0,0.6)
+                  card:
+                    type: glance
+                    show_name: true
+                    show_state: true
+                    columns: 1
+                    entities:
+                      - entity: switch.fan_cpu
+                        tap_action: 
+                          action: toggle
+                        icon: mdi:fan
+                        name: Quạt Server
+#### Remote##
+  - title: tivi
+    icon: mdi:television-classic
+    cards:
+      - type: custom:card-modder
+        style:
+          background-color: rgba(0,0,0,0.2)
+          color: rgb(255, 255, 255)
+          box-shadow: 3px 3px rgba(0,0,0,0.6)
+        card:
+          type: custom:vertical-stack-in-card
+          title: Điều khiển ti vi
+          cards:
+            - type: horizontal-stack
+              cards:
+                - type: custom:card-modder
+                  style:
+                    background-color: rgba(0,0,0,0.3)
+                    background-size: 100% 100%
+                    --paper-item-icon-color: red
+                    border-radius: 20px
+                    border: solid 1px rgba(100,100,100,0.3)
+                    color: rgb(255, 255, 255)
+                    box-shadow: 3px 3px rgba(0,0,0,0.6)
+                  card:
+                    type: glance
+                    show_name: false
+                    show_state: false
+                    columns: 1
+                    entities:
+                      - entity: script.1544321405842
+                        tap_action: 
+                          action: toggle
+                        icon: mdi:power
+                - type: custom:card-modder
+                  style:
+                    background-color: rgba(0,0,0,0.3)
+                    --paper-item-icon-color: yellow
+                    background-size: 100% 100%
+                    border-radius: 20px
+                    border: solid 1px rgba(100,100,100,0.3)
+                    color: rgb(255, 255, 255)
+                    box-shadow: 3px 3px rgba(0,0,0,0.6)
+                  card:
+                    type: glance
+                    show_name: false
+                    show_state: false
+                    columns: 1
+                    entities:
+                      - entity: script.1544322889228
+                        tap_action: 
+                          action: toggle
+                        icon: mdi:menu-open
+                - type: custom:card-modder
+                  style:
+                    background-color: rgba(0,0,0,0.3)
+                    --paper-item-icon-color: green
+                    background-size: 100% 100%
+                    border-radius: 20px
+                    border: solid 1px rgba(100,100,100,0.3)
+                    color: rgb(255, 255, 255)
+                    box-shadow: 3px 3px rgba(0,0,0,0.6)
+                  card:
+                    type: glance
+                    show_name: false
+                    show_state: false
+                    columns: 1
+                    entities:
+                      - entity: script.1544322655327
+                        tap_action:
+                          action: toggle
+                        icon: mdi:source-branch
+            - type: horizontal-stack
+              cards:
+                - type: custom:card-modder
+                  style:
+                    background-color: rgba(0,0,0,0.3)
+                    --paper-item-icon-color: white
+                    background-size: 100% 100%
+                    border-radius: 20px
+                    border: solid 1px rgba(100,100,100,0.3)
+                    color: rgb(255, 255, 255)
+                    box-shadow: 3px 3px rgba(0,0,0,0.6)
+                  card:
+                    type: glance
+                    show_name: false
+                    show_state: false
+                    columns: 1
+                    entities:
+                      - entity: script.1544323192419
+                        tap_action:
+                          action: toggle
+                        icon: mdi:volume-plus
+                - type: custom:card-modder
+                  style:
+                    background-color: rgba(0,0,0,0.3)
+                    background-size: 100% 100%
+                    border-radius: 20px
+                    border: solid 1px rgba(100,100,100,0.3)
+                    color: rgb(255, 255, 255)
+                    box-shadow: 3px 3px rgba(0,0,0,0.6)
+                    --paper-item-icon-color: blue
+                  card:
+                    type: glance
+                    show_name: false
+                    show_state: false
+                    columns: 1
+                    entities:
+                      - entity: script.1544324082526
+                        tap_action:
+                          action: toggle
+                        icon: mdi:menu-up-outline
+                - type: custom:card-modder
+                  style:
+                    background-color: rgba(0,0,0,0.3)
+                    background-size: 100% 100%
+                    border-radius: 20px
+                    border: solid 1px rgba(100,100,100,0.3)
+                    color: rgb(255, 255, 255)
+                    box-shadow: 3px 3px rgba(0,0,0,0.6)
+                    --paper-item-icon-color: white
+                  card:
+                    type: glance
+                    show_name: false
+                    show_state: false
+                    columns: 1
+                    entities:
+                      - entity: script.1544323471587
+                        tap_action:
+                          action: toggle
+                        icon: mdi:arrow-up-bold-circle-outline
+            - type: horizontal-stack
+              cards:
+                - type: custom:card-modder
+                  style:
+                    background-color: rgba(0,0,0,0.3)
+                    background-size: 100% 100%
+                    border-radius: 20px
+                    border: solid 1px rgba(100,100,100,0.3)
+                    color: rgb(255, 255, 255)
+                    box-shadow: 3px 3px rgba(0,0,0,0.6)
+                    --paper-item-icon-color: blue
+                  card:
+                    type: glance
+                    show_name: false
+                    show_state: false
+                    columns: 1
+                    entities:
+                      - entity: script.1544324116218
+                        tap_action:
+                          action: toggle
+                        icon: mdi:menu-left-outline
+                - type: custom:card-modder
+                  style:
+                    background-color: rgba(0,0,0,0.3)
+                    background-size: 100% 100%
+                    border-radius: 20px
+                    border: solid 1px rgba(100,100,100,0.3)
+                    color: rgb(255, 255, 255)
+                    box-shadow: 3px 3px rgba(0,0,0,0.6)
+                    --paper-item-icon-color: blue
+                  card:
+                    type: glance
+                    show_name: false
+                    show_state: false
+                    columns: 1
+                    entities:
+                      - entity: script.1544324142072
+                        tap_action:
+                          action: toggle
+                        icon: mdi:radiobox-marked
+                - type: custom:card-modder
+                  style:
+                    background-color: rgba(0,0,0,0.3)
+                    background-size: 100% 100%
+                    border-radius: 20px
+                    border: solid 1px rgba(100,100,100,0.3)
+                    color: rgb(255, 255, 255)
+                    box-shadow: 3px 3px rgba(0,0,0,0.6)
+                    --paper-item-icon-color: blue
+                  card:
+                    type: glance
+                    show_name: false
+                    show_state: false
+                    columns: 1
+                    entities:
+                      - entity: script.1544324130517
+                        tap_action:
+                          action: toggle
+                        icon: mdi:menu-right-outline
+            - type: horizontal-stack
+              cards:
+                - type: custom:card-modder
+                  style:
+                    background-color: rgba(0,0,0,0.3)
+                    background-size: 100% 100%
+                    border-radius: 20px
+                    border: solid 1px rgba(100,100,100,0.3)
+                    color: rgb(255, 255, 255)
+                    box-shadow: 3px 3px rgba(0,0,0,0.6)
+                    --paper-item-icon-color: white
+                  card:
+                    type: glance
+                    show_name: false
+                    show_state: false
+                    columns: 1
+                    entities:
+                      - entity: script.1544323288814
+                        tap_action:
+                          action: toggle
+                        icon: mdi:volume-minus
+                - type: custom:card-modder
+                  style:
+                    background-color: rgba(0,0,0,0.3)
+                    background-size: 100% 100%
+                    border-radius: 20px
+                    border: solid 1px rgba(100,100,100,0.3)
+                    color: rgb(255, 255, 255)
+                    box-shadow: 3px 3px rgba(0,0,0,0.6)
+                    --paper-item-icon-color: blue
+                  card:
+                    type: glance
+                    show_name: false
+                    show_state: false
+                    columns: 1
+                    entities:
+                      - entity: script.1544324100565
+                        tap_action:
+                          action: toggle
+                        icon: mdi:menu-down-outline
+                - type: custom:card-modder
+                  style:
+                    background-color: rgba(0,0,0,0.3)
+                    background-size: 100% 100%
+                    border-radius: 20px
+                    border: solid 1px rgba(100,100,100,0.3)
+                    color: rgb(255, 255, 255)
+                    box-shadow: 3px 3px rgba(0,0,0,0.6)
+                    --paper-item-icon-color: white
+                  card:
+                    type: glance
+                    show_name: false
+                    show_state: false
+                    columns: 1
+                    entities:
+                      - entity: script.1544323744483
+                        tap_action:
+                          action: toggle
+                        icon: mdi:arrow-down-bold-circle-outline
+            - type: horizontal-stack
+              cards:
+                - type: custom:card-modder
+                  style:
+                    background-color: rgba(0,0,0,0.3)
+                    background-size: 100% 100%
+                    border-radius: 20px
+                    border: solid 1px rgba(100,100,100,0.3)
+                    color: rgb(255, 255, 255)
+                    box-shadow: 3px 3px rgba(0,0,0,0.6)
+                    --paper-item-icon-color: orange
+                  card:
+                    type: glance
+                    show_name: false
+                    show_state: false
+                    columns: 1
+                    entities:
+                      - entity: script.1544322808375
+                        tap_action: 
+                          action: toggle
+                        icon: mdi:menu
+                - type: custom:card-modder
+                  style:
+                    background-color: rgba(0,0,0,0.3)
+                    background-size: 100% 100%
+                    border-radius: 20px
+                    border: solid 1px rgba(100,100,100,0.3)
+                    color: rgb(255, 255, 255)
+                    box-shadow: 3px 3px rgba(0,0,0,0.6)
+                    --paper-item-icon-color: brown
+                  card:
+                    type: glance
+                    show_name: false
+                    show_state: false
+                    columns: 1
+                    entities:
+                      - entity: script.1544323371569
+                        tap_action:
+                          action: toggle
+                        icon: mdi:volume-mute
+                - type: custom:card-modder
+                  style:
+                    background-color: rgba(0,0,0,0.3)
+                    background-size: 100% 100%
+                    border-radius: 20px
+                    border: solid 1px rgba(100,100,100,0.3)
+                    color: rgb(255, 255, 255)
+                    box-shadow: 3px 3px rgba(0,0,0,0.6)
+                    --paper-item-icon-color: purple
+                  card:
+                    type: glance
+                    show_name: false
+                    show_state: false
+                    columns: 1
+                    entities:
+                      - entity: script.1544324160931
+                        tap_action:
+                          action: toggle
+                        icon: mdi:exit-to-app
+      - type: custom:card-modder
+        style:
+          background-color: rgba(0,0,0,0.2)
+          color: rgb(255, 255, 255)
+          box-shadow: 3px 3px rgba(0,0,0,0.6)
+        card:
+          type: custom:vertical-stack-in-card
+          title: Điều khiển quạt
+          cards:
+            - type: horizontal-stack
+              cards:
+                - type: custom:card-modder
+                  style:
+                    background-color: rgba(0,0,0,0.3)
+                    background-size: 100% 100%
+                    --paper-item-icon-color: red
+                    border-radius: 20px
+                    border: solid 1px rgba(100,100,100,0.3)
+                    color: rgb(255, 255, 255)
+                    box-shadow: 3px 3px rgba(0,0,0,0.6)
+                  card:
+                    type: glance
+                    show_name: false
+                    show_state: false
+                    columns: 1
+                    entities:
+                      - entity:  script.1544325579252
+                        tap_action: 
+                          action: toggle
+                        icon: mdi:power
+                - type: custom:card-modder
+                  style:
+                    background-color: rgba(0,0,0,0.3)
+                    --paper-item-icon-color: white
+                    background-size: 100% 100%
+                    border-radius: 20px
+                    border: solid 1px rgba(100,100,100,0.3)
+                    color: rgb(255, 255, 255)
+                    box-shadow: 3px 3px rgba(0,0,0,0.6)
+                  card:
+                    type: glance
+                    show_name: false
+                    show_state: false
+                    columns: 1
+                    entities:
+                      - entity: script.1544325594668
+                        tap_action:
+                          action: toggle
+                        icon: mdi:speedometer
+                - type: custom:card-modder
+                  style:
+                    background-color: rgba(0,0,0,0.3)
+                    --paper-item-icon-color: white
+                    background-size: 100% 100%
+                    border-radius: 20px
+                    border: solid 1px rgba(100,100,100,0.3)
+                    color: rgb(255, 255, 255)
+                    box-shadow: 3px 3px rgba(0,0,0,0.6)
+                  card:
+                    type: glance
+                    show_name: false
+                    show_state: false
+                    columns: 1
+                    entities:
+                      - entity: script.1544325614415
+                        tap_action: 
+                          action: toggle
+                        icon: mdi:timer
+                - type: custom:card-modder
+                  style:
+                    background-color: rgba(0,0,0,0.3)
+                    --paper-item-icon-color: white
+                    background-size: 100% 100%
+                    border-radius: 20px
+                    border: solid 1px rgba(100,100,100,0.3)
+                    color: rgb(255, 255, 255)
+                    box-shadow: 3px 3px rgba(0,0,0,0.6)
+                  card:
+                    type: glance
+                    show_name: false
+                    show_state: false
+                    columns: 1
+                    entities:
+                      - entity: script.1544325630107
+                        tap_action: 
+                          action: toggle
+                        icon: mdi:rotate-3d
+      - type: custom:card-modder
+        style:
+          background-color: rgba(0,0,0,0.2)
+          color: rgb(255, 255, 255)
+          box-shadow: 3px 3px rgba(0,0,0,0.6)
+        card:
+          type: custom:vertical-stack-in-card
+          title: Music
+          cards:
+            - type: horizontal-stack
+              cards:
+                - type: custom:card-modder
+                  style:
+                    background-color: rgba(0,0,0,0.3)
+                    background-size: 100% 100%
+                    border-radius: 20px
+                    border: solid 1px rgba(100,100,100,0.3)
+                    color: rgb(255, 255, 255)
+                    box-shadow: 3px 3px rgba(0,0,0,0.6)
+                  card:
+                    type: entities
+                    show_header_toggle: false
+                    entities:
+                      - entity: media_player.phong_khach
+                        name: Google mini
+### Weather ###
+  - title: Weather
+    icon: mdi:cloud
+    cards:
+      - type: custom:card-modder
+        style:
+          background-image: url("/local/tt5.jpg")
+          background-repeat: no-repeat
+          background-color: rgba(0,0,0,0.0)
+          background-size: 100% 100%
+          border-radius: 20px
+          border: solid 1px rgba(100,100,100,0.3)
+          color: rgb(242, 242, 242)
+          box-shadow: 3px 3px rgba(0,0,0,0.6)
+        card:
+          type: "custom:weather-card"
+          entity_weather:  weather.dark_sky
+          entity_sun: sun.sun
+      - type: custom:card-modder
+        style:
+          background-image: url("/local/tt4.jpg")
+          background-repeat: no-repeat
+          background-color: rgba(0,0,0,0.0)
+          background-size: 100% 100%
+          border-radius: 20px
+          border: solid 1px rgba(100,100,100,0.3)
+          color: rgb(0, 0, 0)
+          box-shadow: 3px 3px rgba(0,0,0,0.6)
+        card:
+          type: glance
+          title: Thời tiết hôm nay
+          columns: 1
+          entities:
+            - entity: sensor.weathertoday
+              name: Thời tiết
+              icon: mdi:weather-cloudy
+      - type: custom:card-modder
+        style:
+          background-color: rgba(0,0,0,0.0)
+          background-size: 100% 100%
+          border-radius: 20px
+          border: solid 1px rgba(100,100,100,0.3)
+          color: rgb(0, 0, 0)
+          box-shadow: 3px 3px rgba(0,0,0,0.6)
+        card:
+          type: iframe
+          url: https://embed.windy.com/embed2.html
+          aspect_ratio: 99%
+## System##
+  - title: System
+    icon: mdi:server-minus
+    cards:
+      - type: custom:card-modder
+        style:
+          --paper-card-background-color: rgba(0, 0, 0, 0.3)
+          --paper-item-icon-color: white
+          border-radius: 10px
+          color: rgb(255,255,255)
+        card:
+          type: glance
+          title: Máy chủ
+          columns: 2
+          entities:
+            - entity: sensor.processor_use
+              name: CPU
+            - entity: sensor.disk_use_percent_home
+              name: Dung lượng   
+      - type: custom:card-modder
+        style:
+          --paper-card-background-color: rgba(0, 0, 0, 0.3)
+          --paper-item-icon-color: white
+          border-radius: 10px
+          color: rgb(255,255,255)
+        card:
+          type: glance
+          title: Ram
+          columns: 2
+          entities:
+            - entity: sensor.memory_free
+              name: Ram trống
+            - entity: sensor.memory_use
+              name: Ram đã đùng             
+      - type: custom:card-modder
+        report_size: 1
+        style:
+          --paper-card-background-color: rgba(0, 0, 0, 0.3)
+          --paper-item-icon-color: white
+          border-radius: 10px
+          color: rgb(255,255,255)
+        card:
+           type: sensor
+           entity: sensor.cpu_temperature
+           name: Nhiệt độ CPU 
+           graph: line
+           line_color: "#3498db"
+           hours_to_show: 24
+           detail: 2
+      - type: custom:card-modder
+        style:
+          --paper-card-background-color: rgba(0, 0, 0, 0.3)
+          --paper-item-icon-color: white
+          border-radius: 10px
+          color: rgb(255,255,255)
+        card:
+          type: glance
+          title: CPU
+          columns: 2
+          entities:
+            - entity: sensor.cpu_speed
+              name: Tốc độ CPU
+            - entity: sensor.last_boot
+              name: Khởi động         
+      - type: custom:card-modder
+        style:
+          --paper-card-background-color: rgba(0, 0, 0, 0.3)
+          --paper-item-icon-color: white
+          border-radius: 10px
+          color: rgb(255,255,255)
+        card:
+          type: glance
+          title: Mạng
+          columns: 3
+          entities:
+            - entity: sensor.speedtest_ping
+              name: Ping
+            - entity: sensor.speedtest_download
+              name: Tốc độ tải xuống
+            - entity: sensor.speedtest_upload
+              name: Tốc độ tải lên
+      - type: custom:card-modder
+        style:
+          --paper-card-background-color: rgba(0, 0, 0, 0.3)
+          --paper-item-icon-color: white
+          border-radius: 10px
+          color: rgb(255,255,255)
+        card:
+          type: glance
+          title: OS
+          columns: 2
+          entities:
+            - entity: sensor.current_version
+              name: Phiên bản
+              icon: mdi:note
+            - entity: sensor.time_online
+              name: Thời gian online     
+## Automation##
+  - title: automation
+    icon: mdi:autorenew
+    cards:
+      - type: custom:card-modder
+        style:
+          background-color: rgba(0,0,0,0.2)
+          color: rgb(0, 0, 0)
+          box-shadow: 3px 3px rgba(0,0,0,0.6)
+        card:
+          type: custom:vertical-stack-in-card
+          title:
+          cards:
+            - type: custom:card-modder
+              style:
+                background-color: rgba(0,0,0,0.2)
+                color: rgb(255, 255, 255)
+                box-shadow: 3px 3px rgba(0,0,0,0.6)
+              card:
+                type: custom:vertical-stack-in-card
+                title: Tự động bật đèn
+                cards:
+                  - type: custom:card-modder
+                    style:
+                      background-color: rgba(0,0,0,0.4)
+                      border-radius: 20px
+                      border: solid 1px rgba(100,100,100,0.3)
+                      color: rgb(255, 255, 255)
+                      box-shadow: 3px 3px rgba(0,0,0,0.6)
+                      --paper-item-icon-color: white
+                    card:
+                      type: entities
+                      show_header_toggle: false
+                      entities: 
+                        - entity: automation.auto_turn_off_light_kitchen_morning
+                          name: Tắt đèn nhà bếp buổi sáng
+                        - entity: automation.auto_turn_off_light_nt
+                          name: Tắt đèn nhà trước buổi tối
+                        - entity: automation.auto_turn_on_light_kitchen_morning
+                          name: Bật đèn nhà bếp buổi sáng
+                        - entity: automation.auto_turn_on_light_kitchen_night
+                          name: Tự động bật đèn hub nhà bếp buổi tối
+                        - entity: automation.auto_turn_on_light_living
+                          name: Bật đèn phòng khách
+                        - entity: automation.auto_turn_on_light_nt
+                          name: Bật đèn nhà trên
+                        - entity: automation.turn_off_light_hub
+                          name: Tự động tắt đèn hub nhà bếp buổi tối
+                        - entity: automation.turn_off_light_hub
+                          name: Tắt đèn hub nhà bếp
+                        - entity: automation.auto_turn_light_nt_morning
+                          name: Bật đèn nhà trên buổi sáng
+                        - entity: automation.auto_turn_off_light_nt_morning
+                          name: Tắt đèn nhà trên buổi sáng
+            - type: custom:card-modder
+              style:
+                background-color: rgba(0,0,0,0.2)
+                color: rgb(255, 255, 255)
+                box-shadow: 3px 3px rgba(0,0,0,0.6)
+              card:
+                type: custom:vertical-stack-in-card
+                title: Tự động hệ thống
+                cards:
+                  - type: custom:card-modder
+                    style:
+                      background-color: rgba(0,0,0,0.4)
+                      border-radius: 20px
+                      border: solid 1px rgba(100,100,100,0.3)
+                      color: rgb(255, 255, 255)
+                      box-shadow: 3px 3px rgba(0,0,0,0.6)
+                      --paper-item-icon-color: white
+                    card:
+                      type: entities
+                      show_header_toggle: false
+                      entities: 
+                        - entity: automation.auto_turn_on_fan_cpu
+                          name: Bật quạt tản nhiệt tự động
+                        - entity: automation.auto_turn_off_fan_cpu
+                          name: Tắt quạt tản nhiệt tự động
+                        - entity: automation.turn_off_fan_night
+                          name: Tắt quạt CPU ban đêm
+                        - entity: automation.auto_update_state_nt_1_on_restart
+                          name: Cập nhật trạng thái đèn trong nhà trên
+                        - entity: automation.auto_update_state_nt_2_on_restart
+                          name: Cập nhật trạng thái đèn ngoài nhà trên
+                        - entity: automation.update_state_switch_living_1_on_restart
+                          name: Cập nhật trạng thái đèn trong phòng khách
+                        - entity: automation.auto_update_state_living_2_on_restart
+                          name: Cập nhật trạng thái đèn ngoài phòng khách
+                        - entity: automation.auto_update_state_kitchen_1_on_restart
+                          name: Cập nhật trạng thái đèn trong nhà bếp
+                        - entity: automation.auto_update_state_kitchen_2_on_restart
+                          name: Cập nhật trạng thái đèn ngoài nhà bếp
+                        - entity: automation.auto_update_state_bedroom_on_restart
+                          name: Cập nhật trạng thái đèn phòng ngủ
+            - type: custom:card-modder
+              style:
+                background-color: rgba(0,0,0,0.2)
+                color: rgb(255, 255, 255)
+                box-shadow: 3px 3px rgba(0,0,0,0.6)
+              card:
+                type: custom:vertical-stack-in-card
+                title: Dự báo thời tiết
+                cards:
+                  - type: custom:card-modder
+                    style:
+                      background-color: rgba(0,0,0,0.4)
+                      border-radius: 20px
+                      border: solid 1px rgba(100,100,100,0.3)
+                      color: rgb(255, 255, 255)
+                      box-shadow: 3px 3px rgba(0,0,0,0.6)
+                      --paper-item-icon-color: white
+                    card:
+                      type: entities
+                      show_header_toggle: false
+                      entities:
+                        - entity: automation.weather_forcast_morning
+                          name: Dự báo thời tiết sáng
+                        - entity: automation.weather_forcast_trua
+                          name: Dự báo thời tiết trưa
+                        - entity: automation.weather_forcast
+                          name: Dự báo thời tiết tối
+            - type: custom:card-modder
+              style:
+                background-color: rgba(0,0,0,0.2)
+                color: rgb(255, 255, 255)
+                box-shadow: 3px 3px rgba(0,0,0,0.6)
+              card:
+                type: custom:vertical-stack-in-card
+                title: Tự động nút nhấn Tivi
+                cards:
+                  - type: custom:card-modder
+                    style:
+                      background-color: rgba(0,0,0,0.4)
+                      border-radius: 20px
+                      border: solid 1px rgba(100,100,100,0.3)
+                      color: rgb(255, 255, 255)
+                      box-shadow: 3px 3px rgba(0,0,0,0.6)
+                      --paper-item-icon-color: white
+                    card:
+                      type: entities
+                      show_header_toggle: false
+                      entities: 
+                        - entity: automation.long_click_turn_on_power_tivi_875
+                          name: Mở nguồn tivi
+                        - entity: automation.long_click_turn_off_power_tivi_875
+                          name: Tắt nguồn tivi
+                        - entity: automation.double_turn_on_tivi_875
+                          name: Mở/tắt tivi
+      - type: custom:card-modder
+        style:
+          background-color: rgba(0,0,0,0.2)
+          color: rgb(0, 0, 0)
+          box-shadow: 3px 3px rgba(0,0,0,0.6)
+        card:
+          type: custom:vertical-stack-in-card
+          title:
+          cards:
+            - type: custom:card-modder
+              style:
+                background-color: rgba(0,0,0,0.2)
+                color: rgb(255, 255, 255)
+                box-shadow: 3px 3px rgba(0,0,0,0.6)
+              card:
+                type: custom:vertical-stack-in-card
+                title: Tự động nút nhấn đèn buổi sáng 
+                cards:
+                  - type: custom:card-modder
+                    style:
+                      background-color: rgba(0,0,0,0.4)
+                      border-radius: 20px
+                      border: solid 1px rgba(100,100,100,0.3)
+                      color: rgb(255, 255, 255)
+                      box-shadow: 3px 3px rgba(0,0,0,0.6)
+                      --paper-item-icon-color: white
+                    card:
+                      type: entities
+                      show_header_toggle: false
+                      entities: 
+                        - entity: automation.single_click_turn_on_light_nt_662_sang
+                          name: Nhấn đơn mở đèn nhà trước
+                        - entity:  automation.single_click_turn_off_light_nt_662_sang
+                          name: Nhấn đơn tắt đèn nhà trước
+                        - entity: automation.double_turn_on_light_nt_outdoor_875_sang
+                          name: Nhấn đúp mở đèn ngoài nhà trước
+                        - entity: automation.double_turn_off_light_nt_outdoor_875_sang
+                          name: Nhấn đúp tắt đèn ngoài nhà trước
+                        - entity: automation.double_click_turn_on_light_kitchen_662_sang
+                          name: Nhấn đúp mở đèn nhà bếp
+                        - entity: automation.double_turn_off_light_kitchen_662_sang
+                          name: Nhấn đúp tắt đèn nhà bếp
+                        - entity:  automation.long_click_turn_on_light_living_875_sang
+                          name: Nhấn giữ mở đèn phòng khách
+                        - entity: automation.long_click_turn_off_light_living_875_sang
+                          name: Nhấn giữ tắt đèn phòng khách
+                        - entity: automation.long_click_turn_on_light_living_outdoor_662_sang
+                          name: Nhấn giữ mở đèn ngoài phòng khách
+                        - entity: automation.long_click_turn_off_light_lving_outdoor_662_sang
+                          name: Nhấn giữ tắt đèn ngoài phòng khách
+            - type: custom:card-modder
+              style:
+                background-color: rgba(0,0,0,0.2)
+                color: rgb(255, 255, 255)
+                box-shadow: 3px 3px rgba(0,0,0,0.6)
+              card:
+                type: custom:vertical-stack-in-card
+                title: Tự động nút nhấn đèn buổi tối
+                cards:
+                  - type: custom:card-modder
+                    style:
+                      background-color: rgba(0,0,0,0.4)
+                      border-radius: 20px
+                      border: solid 1px rgba(100,100,100,0.3)
+                      color: rgb(255, 255, 255)
+                      box-shadow: 3px 3px rgba(0,0,0,0.6)
+                      --paper-item-icon-color: white
+                    card:
+                      type: entities
+                      show_header_toggle: false
+                      entities: 
+                        - entity: automation.single_click_turn_on_light_nt_662_toi
+                          name: Nhấn đơn mở đèn nhà trước
+                        - entity: automation.single_click_turn_off_ligth_nt_662_toi
+                          name: Nhấn đơn tắt đèn nhà trước
+                        - entity: automation.double_click_turn_on_light_nt_outdoor_662_toi
+                          name: Nhấn đúp mở đèn ngoài nhà trước
+                        - entity:  automation.double_turn_off_light_nt_outdoor_662_toi
+                          name: Nhấn đúp tắt đèn ngoài nhà trước
+                        - entity: automation.double_click_turn_on_light_kitchen_875_toi
+                          name: Nhấn đúp mở đèn nhà bếp
+                        - entity: automation.double_turn_off_light_kitchen_875_toi
+                          name: Nhấn đúp tắt đèn nhà bếp
+                        - entity: automation.long_click_turn_on_light_living_875_toi
+                          name: Nhấn giữ mở đèn phòng khách
+                        - entity:  automation.long_click_turn_off_light_living_875_toi
+                          name: Nhấn giữ tắt đèn phòng khách
+                        - entity: automation.long_click_turn_on_light_living_outdoor_662_toi
+                          name: Nhấn giữ mở đèn ngoài phòng khách
+                        - entity: automation.long_click_turn_off_light_living_outdoor_662_toi
+                          name: Nhấn giữ tắt đèn ngoài phòng khách
+            - type: custom:card-modder
+              style:
+                background-color: rgba(0,0,0,0.2)
+                color: rgb(255, 255, 255)
+                box-shadow: 3px 3px rgba(0,0,0,0.6)
+              card:
+                type: custom:vertical-stack-in-card
+                title: Tự động nút nhấn quạt
+                cards:
+                  - type: custom:card-modder
+                    style:
+                      background-color: rgba(0,0,0,0.4)
+                      border-radius: 20px
+                      border: solid 1px rgba(100,100,100,0.3)
+                      color: rgb(255, 255, 255)
+                      box-shadow: 3px 3px rgba(0,0,0,0.6)
+                      --paper-item-icon-color: white
+                    card:
+                      type: entities
+                      show_header_toggle: false
+                      entities: 
+                        - entity: automation.turn_on_fan_662
+                          name: Bật quạt
+                        - entity: automation.speed_fan_662
+                          name: Tốc độ quạt
+                        - entity: automation.swing_round_662
+                          name: Xoay
+### Thông tin ###
+  - title: Thông tin
+    icon: mdi:information-outline
+    cards:
+      - type: custom:card-modder
+        style:
+          background-color: rgba(0,0,0,0.2)
+          background-size: 100% 100%
+          border-radius: 20px
+          border: solid 1px rgba(100,100,100,0.3)
+          color: rgb(255, 255, 255)
+          box-shadow: 3px 3px rgba(0,0,0,0.6)
+          --paper-item-icon-color: white
+          --paper-card-background-color: rgba(0, 0, 0, 0.2)
+        card:
+          type: entities
+          title: Đồng hồ báo thức
+          show_header_toggle: false
+          entities:
+            - entity: automation.arlarm_clock
+              icon: mdi:timetable
+              name: Trạng thái
+            - entity: sensor.alarm_time
+              name: Thời gian báo thức
+              icon: mdi:alarm-plus
+            - entity: input_number.slider1
+              name: Giờ
+              icon: mdi:av-timer
+            - entity: input_number.slider2
+              name: Phút
+              icon: mdi:timer
+            - entity: input_number.slider4
+              name: Chọn âm báo thức
+            - entity: input_number.slider3
+              name: Âm lượng
+            - entity: input_boolean.alarmweekday
+              name: Báo thức cuối tuần
+              icon: mdi:calendar-clock
+      - type: custom:card-modder
+        style:
+          background-color: rgba(0,0,0,0.3)
+          background-size: 100% 100%
+          border-radius: 20px
+          border: solid 1px rgba(100,100,100,0.3)
+          color: rgb(255, 255, 255)
+          box-shadow: 3px 3px rgba(0,0,0,0.6)
+          --paper-item-icon-color: white
+        card:
+          type: entities
+          title: Thông tin pin 
+          show_header_toggle: false
+          entities:
+            - entity: sensor.battery_sensor_temperature_kitchen
+              name: Cảm biến nhiệt độ, độ ẩm
+            - entity: sensor.battery_switch_wireless
+              name: Nút nhấn phòng khách
+            - entity: sensor.battery_switch_wireless_kitchen
+              name: Nút nhấn nhà bếp
+            - entity: sensor.battery_switch_wireless_light
+              name: Nút nhấn đèn
+            - entity: sensor.battery_sensor_motion
+              name: Cảm biến chuyển động phòng khách
+            - entity: sensor.battery_sensor_motion_kitchen
+              name: Cảm biến chuyển động nhà bếp
+            - entity: sensor.battery_sensor_motion_nt
+              name: Cảm biến chuyển động nhà trên
+            - entity: sensor.battery_sensor_main_door
+              name: Cảm biến cửa chính
+            - entity: sensor.battery_sensor_door
+              name: Cảm biến cửa sau
+            - entity: sensor.battery_iphone
+              name: Iphone của Mẩn

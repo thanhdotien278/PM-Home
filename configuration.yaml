@@ -1,0 +1,615 @@
+homeassistant:
+  # Name of the location where Home Assistant is running
+  name: Home
+  # Location required to calculate the time the sun rises and sets
+  latitude: ****
+  longitude: ****
+  # Impacts weather/sunrise data (altitude above sea level in meters)
+  elevation: 0
+  # metric for Metric, imperial for Imperial
+  unit_system: metric
+  # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+  time_zone: Asia/Ho_Chi_Minh
+  # Customization file
+  customize: !include customize.yaml
+  whitelist_external_dirs:
+  - '/tmp'    
+# Show links to resources in log and frontend
+introduction:
+
+# Enables the frontend
+frontend:
+  javascript_version: latest
+# Enables configuration UI
+config:
+# Uncomment this if you are using SSL/TLS, running in Docker container, etc.
+# http:
+#   base_url: example.duckdns.org:8123
+
+# Checks for available updates
+# Note: This component will send some information about your system to
+# the developers to assist with development of Home Assistant.
+# For more information, please see:
+# https://home-assistant.io/blog/2016/10/25/explaining-the-updater/
+updater:
+  # Optional, allows Home Assistant developers to focus on popular components.
+  # include_used_components: true
+
+# Discover some devices automatically
+#discovery:
+
+# Allows you to issue voice commands from the frontend in enabled browsers
+conversation:
+
+# Enables support for tracking state changes over time
+history:
+
+# View all events in a logbook
+logbook:
+
+# Enables a map showing the location of tracked devices
+map:
+
+# Track the sun
+sun:
+mqtt:
+  broker: 192.168.31.6
+  port: 1883
+  username: homeassistant
+  password: ****   
+  protocol: 3.1.1
+lovelace:
+  mode: yaml
+xiaomi_aqara:
+  gateways:
+    - mac: 7c:49:eb:1a:6X:XX
+      key: ****
+    - mac: 7c:49:eb:19:0X:XX
+      key: ****
+input_number:
+  slider1:
+    name: Hour
+    icon: mdi:timer
+    initial: 5
+    min: 0
+    max: 23
+    step: 1
+    
+  slider2:
+    name: Minutes
+    icon: mdi:timer
+    initial: 00
+    min: 0
+    max: 59
+    step: 5
+
+  slider3:
+    name: volume gateway
+    icon: mdi:volume-plus
+    initial: 10
+    min: 10
+    max: 100
+    step: 10
+
+  slider4:
+    name: ringstone
+    icon: mdi:music
+    initial: 22
+    min: 20
+    max: 29
+    step: 1
+input_boolean:
+  alarmweekday:
+    name: Weekdays Only
+    initial: off
+    icon: mdi:calendar
+device_tracker:
+  - platform: icloud
+    username: ****@gmail.com
+    password: ******
+    account_name: Man Pham
+# Sensors
+sensor:
+  # Weather prediction
+  - platform: template
+    sensors:
+      alarm_time:
+        friendly_name: 'Time'
+        value_template: '{{ "%0.02d:%0.02d" | format(states("input_number.slider1") | int, states("input_number.slider2") | int) }}'
+
+  - platform: template
+    sensors:
+      battery_iphone:
+        friendly_name: PM Smart
+        unit_of_measurement: '%'
+        value_template: >-
+            {%- if states.device_tracker.pmsmart.attributes.battery %}
+                {{ states.device_tracker.pmsmart.attributes.battery|round }}
+            {% else %}
+                {{ states.device_tracker.pmsmart.state }}
+            {%- endif %}
+        device_class: battery
+        
+  - platform: cpuspeed
+  - platform: version
+  - platform: uptime
+    name: Time Online
+    unit_of_measurement: hours
+  - platform: api_streams
+  
+  - platform: systemmonitor
+    resources:
+      - type: memory_free
+      - type: memory_use
+      - type: processor_use
+      - type: disk_use_percent
+        arg: /home
+      - type: last_boot
+  - platform: speedtest
+    minute: 59
+    monitored_conditions:
+      - ping
+      - download
+      - upload
+      
+  - platform: darksky
+    api_key: ******
+    monitored_conditions:
+      - summary
+      - icon
+      - nearest_storm_distance
+      - precip_type
+      - precip_intensity
+      - precip_probability
+      - precip_accumulation
+      - temperature
+      - wind_speed
+      - cloud_cover
+      - humidity
+      - pressure
+      - visibility
+      - daily_summary
+      - apparent_temperature_low
+      - precip_intensity_max
+      - apparent_temperature_high
+      - temperature_high
+      - temperature_low
+      
+  - platform: time_date
+    display_options:
+      - 'time'
+   
+  - platform: command_line
+    name: CPU Temperature
+    command: "cat /sys/class/thermal/thermal_zone0/temp"
+    unit_of_measurement: "°C"
+    value_template: '{{ value | multiply(0.001) | round(1) }}'
+
+  - platform: template
+    sensors:
+      battery_sensor_door:
+        friendly_name: 'Cảm biến cửa sau'
+        value_template: "{{ states.binary_sensor.door_window_sensor_158d00023ed625.attributes.battery_level|default(-1)|int if states.binary_sensor.door_window_sensor_158d00023ed625 is not none }}"
+        unit_of_measurement: '%'
+        icon_template: '{% if states.binary_sensor.door_window_sensor_158d00023ed625.attributes.battery_level == 100 %}
+                           mdi:battery
+                        {% elif states.binary_sensor.door_window_sensor_158d00023ed625.attributes.battery_level >= 90 %}
+                           mdi:battery-90
+                        {% elif states.binary_sensor.door_window_sensor_158d00023ed625.attributes.battery_level >= 80 %}
+                           mdi:battery-80
+                        {% elif states.binary_sensor.door_window_sensor_158d00023ed625.attributes.battery_level >= 70 %}
+                           mdi:battery-70
+                        {% elif states.binary_sensor.door_window_sensor_158d00023ed625.attributes.battery_level >= 60 %}
+                           mdi:battery-60
+                        {% elif states.binary_sensor.door_window_sensor_158d00023ed625.attributes.battery_level >= 50 %}
+                           mdi:battery-50
+                        {% elif states.binary_sensor.door_window_sensor_158d00023ed625.attributes.battery_level >= 40 %}
+                           mdi:battery-40
+                        {% elif states.binary_sensor.door_window_sensor_158d00023ed625.attributes.battery_level >= 30 %}
+                           mdi:battery-30
+                        {% elif states.binary_sensor.door_window_sensor_158d00023ed625.attributes.battery_level >= 20 %}
+                           mdi:battery-20
+                        {% elif states.binary_sensor.door_window_sensor_158d00023ed625.attributes.battery_level >= 10 %}
+                           mdi:battery-10
+                        {% else %}
+                           battery-outline
+                        {% endif %}'
+     
+  - platform: template
+    sensors:
+      battery_sensor_main_door:
+        friendly_name: 'Cảm biến cửa chính'
+        value_template: "{{ states.binary_sensor.door_window_sensor_158d000288d30c.attributes.battery_level|default(-1)|int if states.binary_sensor.door_window_sensor_158d000288d30c is not none }}"
+        unit_of_measurement: '%'
+        icon_template: '{% if states.binary_sensor.door_window_sensor_158d000288d30c.attributes.battery_level == 100 %}
+                           mdi:battery
+                        {% elif states.binary_sensor.door_window_sensor_158d000288d30c.attributes.battery_level >= 90 %}
+                           mdi:battery-90
+                        {% elif states.binary_sensor.door_window_sensor_158d000288d30c.attributes.battery_level >= 80 %}
+                           mdi:battery-80
+                        {% elif states.binary_sensor.door_window_sensor_158d000288d30c.attributes.battery_level >= 70 %}
+                           mdi:battery-70
+                        {% elif states.binary_sensor.door_window_sensor_158d000288d30c.attributes.battery_level >= 60 %}
+                           mdi:battery-60
+                        {% elif states.binary_sensor.door_window_sensor_158d000288d30c.attributes.battery_level >= 50 %}
+                           mdi:battery-50
+                        {% elif states.binary_sensor.door_window_sensor_158d000288d30c.attributes.battery_level >= 40 %}
+                           mdi:battery-40
+                        {% elif states.binary_sensor.door_window_sensor_158d000288d30c.attributes.battery_level >= 30 %}
+                           mdi:battery-30
+                        {% elif states.binary_sensor.door_window_sensor_158d000288d30c.attributes.battery_level >= 20 %}
+                           mdi:battery-20
+                        {% elif states.binary_sensor.door_window_sensor_158d000288d30c.attributes.battery_level >= 10 %}
+                           mdi:battery-10
+                        {% else %}
+                           battery-outline
+                        {% endif %}'
+  - platform: template
+    sensors:
+      battery_sensor_motion:
+        friendly_name: 'Cảm biến chuyển động'
+        value_template: "{{ states.binary_sensor.motion_sensor_158d000223ee4a.attributes.battery_level|default(-1)|int if states.binary_sensor.motion_sensor_158d000223ee4a is not none }}"
+        unit_of_measurement: '%'
+        icon_template: '{% if states.binary_sensor.motion_sensor_158d000223ee4a.attributes.battery_level == 100 %}
+                           mdi:battery
+                        {% elif states.binary_sensor.motion_sensor_158d000223ee4a.attributes.battery_level >= 90 %}
+                           mdi:battery-90
+                        {% elif states.binary_sensor.motion_sensor_158d000223ee4a.attributes.battery_level >= 80 %}
+                           mdi:battery-80
+                        {% elif states.binary_sensor.motion_sensor_158d000223ee4a.attributes.battery_level >= 70 %}
+                           mdi:battery-70
+                        {% elif states.binary_sensor.motion_sensor_158d000223ee4a.attributes.battery_level >= 60 %}
+                           mdi:battery-60
+                        {% elif states.binary_sensor.motion_sensor_158d000223ee4a.attributes.battery_level >= 50 %}
+                           mdi:battery-50
+                        {% elif states.binary_sensor.motion_sensor_158d000223ee4a.attributes.battery_level >= 40 %}
+                           mdi:battery-40
+                        {% elif states.binary_sensor.motion_sensor_158d000223ee4a.attributes.battery_level >= 30 %}
+                           mdi:battery-30
+                        {% elif states.binary_sensor.motion_sensor_158d000223ee4a.attributes.battery_level >= 20 %}
+                           mdi:battery-20
+                        {% elif states.binary_sensor.motion_sensor_158d000223ee4a.attributes.battery_level >= 10 %}
+                           mdi:battery-10
+                        {% else %}
+                           battery-outline
+                        {% endif %}'
+  - platform: template
+    sensors:
+      battery_switch_wireless:
+        friendly_name: 'Công tắc không dây'
+        value_template: "{{ states.binary_sensor.switch_158d0002048d1b.attributes.battery_level|default(-1)|int if states.binary_sensor.switch_158d0002048d1b is not none }}"
+        unit_of_measurement: '%'
+        icon_template: '{% if states.binary_sensor.switch_158d0002048d1b.attributes.battery_level == 100 %}
+                           mdi:battery
+                        {% elif states.binary_sensor.switch_158d0002048d1b.attributes.battery_level >= 90 %}
+                           mdi:battery-90
+                        {% elif states.binary_sensor.switch_158d0002048d1b.attributes.battery_level >= 80 %}
+                           mdi:battery-80
+                        {% elif states.binary_sensor.switch_158d0002048d1b.attributes.battery_level >= 70 %}
+                           mdi:battery-70
+                        {% elif states.binary_sensor.switch_158d0002048d1b.attributes.battery_level >= 60 %}
+                           mdi:battery-60
+                        {% elif states.binary_sensor.switch_158d0002048d1b.attributes.battery_level >= 50 %}
+                           mdi:battery-50
+                        {% elif states.binary_sensor.switch_158d0002048d1b.attributes.battery_level >= 40 %}
+                           mdi:battery-40
+                        {% elif states.binary_sensor.switch_158d0002048d1b.attributes.battery_level >= 30 %}
+                           mdi:battery-30
+                        {% elif states.binary_sensor.switch_158d0002048d1b.attributes.battery_level >= 20 %}
+                           mdi:battery-20
+                        {% elif states.binary_sensor.switch_158d0002048d1b.attributes.battery_level >= 10 %}
+                           mdi:battery-10
+                        {% else %}
+                           battery-outline
+                        {% endif %}'
+
+  - platform: template
+    sensors:
+      battery_sensor_motion_nt:
+        friendly_name: 'Cảm biến chuyển động nhà trên'
+        value_template: "{{ states.binary_sensor.motion_sensor_158d00027a31f0.attributes.battery_level|default(-1)|int if states.binary_sensor.motion_sensor_158d00027a31f0 is not none }}"
+        unit_of_measurement: '%'
+        icon_template: '{% if states.binary_sensor.motion_sensor_158d00027a31f0.attributes.battery_level == 100 %}
+                           mdi:battery
+                        {% elif states.binary_sensor.motion_sensor_158d00027a31f0.attributes.battery_level >= 90 %}
+                           mdi:battery-90
+                        {% elif states.binary_sensor.motion_sensor_158d00027a31f0.attributes.battery_level >= 80 %}
+                           mdi:battery-80
+                        {% elif states.binary_sensor.motion_sensor_158d00027a31f0.attributes.battery_level >= 70 %}
+                           mdi:battery-70
+                        {% elif states.binary_sensor.motion_sensor_158d00027a31f0.attributes.battery_level >= 60 %}
+                           mdi:battery-60
+                        {% elif states.binary_sensor.motion_sensor_158d00027a31f0.attributes.battery_level >= 50 %}
+                           mdi:battery-50
+                        {% elif states.binary_sensor.motion_sensor_158d00027a31f0.attributes.battery_level >= 40 %}
+                           mdi:battery-40
+                        {% elif states.binary_sensor.motion_sensor_158d00027a31f0.attributes.battery_level >= 30 %}
+                           mdi:battery-30
+                        {% elif states.binary_sensor.motion_sensor_158d00027a31f0.attributes.battery_level >= 20 %}
+                           mdi:battery-20
+                        {% elif states.binary_sensor.motion_sensor_158d00027a31f0.attributes.battery_level >= 10 %}
+                           mdi:battery-10
+                        {% else %}
+                           battery-outline
+                        {% endif %}'
+  - platform: template
+    sensors:
+      battery_sensor_motion_kitchen:
+        friendly_name: 'Cảm biến chuyển động nhà bếp'
+        value_template: "{{ states.binary_sensor.motion_sensor_158d00027a31a0.attributes.battery_level|default(-1)|int if states.binary_sensor.motion_sensor_158d00027a31a0 is not none }}"
+        unit_of_measurement: '%'
+        icon_template: '{% if states.binary_sensor.motion_sensor_158d00027a31a0.attributes.battery_level == 100 %}
+                           mdi:battery
+                        {% elif states.binary_sensor.motion_sensor_158d00027a31a0.attributes.battery_level >= 90 %}
+                           mdi:battery-90
+                        {% elif states.binary_sensor.motion_sensor_158d00027a31a0.attributes.battery_level >= 80 %}
+                           mdi:battery-80
+                        {% elif states.binary_sensor.motion_sensor_158d00027a31a0.attributes.battery_level >= 70 %}
+                           mdi:battery-70
+                        {% elif states.binary_sensor.motion_sensor_158d00027a31a0.attributes.battery_level >= 60 %}
+                           mdi:battery-60
+                        {% elif states.binary_sensor.motion_sensor_158d00027a31a0.attributes.battery_level >= 50 %}
+                           mdi:battery-50
+                        {% elif states.binary_sensor.motion_sensor_158d00027a31a0.attributes.battery_level >= 40 %}
+                           mdi:battery-40
+                        {% elif states.binary_sensor.motion_sensor_158d00027a31a0.attributes.battery_level >= 30 %}
+                           mdi:battery-30
+                        {% elif states.binary_sensor.motion_sensor_158d00027a31a0.attributes.battery_level >= 20 %}
+                           mdi:battery-20
+                        {% elif states.binary_sensor.motion_sensor_158d00027a31a0.attributes.battery_level >= 10 %}
+                           mdi:battery-10
+                        {% else %}
+                           battery-outline
+                        {% endif %}'
+  - platform: template
+    sensors:
+      battery_switch_wireless_kitchen:
+        friendly_name: 'Nút nhấn nhà bếp'
+        value_template: "{{ states.binary_sensor.switch_158d00026b8662.attributes.battery_level|default(-1)|int if states.binary_sensor.switch_158d00026b8662 is not none }}"
+        unit_of_measurement: '%'
+        icon_template: '{% if states.binary_sensor.switch_158d00026b8662.attributes.battery_level == 100 %}
+                           mdi:battery
+                        {% elif states.binary_sensor.switch_158d00026b8662.attributes.battery_level >= 90 %}
+                           mdi:battery-90
+                        {% elif states.binary_sensor.switch_158d00026b8662.attributes.battery_level >= 80 %}
+                           mdi:battery-80
+                        {% elif states.binary_sensor.switch_158d00026b8662.attributes.battery_level >= 70 %}
+                           mdi:battery-70
+                        {% elif states.binary_sensor.switch_158d00026b8662.attributes.battery_level >= 60 %}
+                           mdi:battery-60
+                        {% elif states.binary_sensor.switch_158d00026b8662.attributes.battery_level >= 50 %}
+                           mdi:battery-50
+                        {% elif states.binary_sensor.switch_158d00026b8662.attributes.battery_level >= 40 %}
+                           mdi:battery-40
+                        {% elif states.binary_sensor.switch_158d00026b8662.attributes.battery_level >= 30 %}
+                           mdi:battery-30
+                        {% elif states.binary_sensor.switch_158d00026b8662.attributes.battery_level >= 20 %}
+                           mdi:battery-20
+                        {% elif states.binary_sensor.switch_158d00026b8662.attributes.battery_level >= 10 %}
+                           mdi:battery-10
+                        {% else %}
+                           battery-outline
+                        {% endif %}'
+  - platform: template
+    sensors:
+      battery_switch_wireless_light:
+        friendly_name: 'Nút nhấn đèn'
+        value_template: "{{ states.binary_sensor.switch_158d00026b8875.attributes.battery_level|default(-1)|int if states.binary_sensor.switch_158d00026b8875 is not none }}"
+        unit_of_measurement: '%'
+        icon_template: '{% if states.binary_sensor.switch_158d00026b8875.attributes.battery_level == 100 %}
+                           mdi:battery
+                        {% elif states.binary_sensor.switch_158d00026b8875.attributes.battery_level >= 90 %}
+                           mdi:battery-90
+                        {% elif states.binary_sensor.switch_158d00026b8875.attributes.battery_level >= 80 %}
+                           mdi:battery-80
+                        {% elif states.binary_sensor.switch_158d00026b8875.attributes.battery_level >= 70 %}
+                           mdi:battery-70
+                        {% elif states.binary_sensor.switch_158d00026b8875.attributes.battery_level >= 60 %}
+                           mdi:battery-60
+                        {% elif states.binary_sensor.switch_158d00026b8875.attributes.battery_level >= 50 %}
+                           mdi:battery-50
+                        {% elif states.binary_sensor.switch_158d00026b8875.attributes.battery_level >= 40 %}
+                           mdi:battery-40
+                        {% elif states.binary_sensor.switch_158d00026b8875.attributes.battery_level >= 30 %}
+                           mdi:battery-30
+                        {% elif states.binary_sensor.switch_158d00026b8875.attributes.battery_level >= 20 %}
+                           mdi:battery-20
+                        {% elif states.binary_sensor.switch_158d00026b8875.attributes.battery_level >= 10 %}
+                           mdi:battery-10
+                        {% else %}
+                           battery-outline
+                        {% endif %}'
+  - platform: template
+    sensors:
+      battery_sensor_temperature_kitchen:
+        friendly_name: 'Cảm biến nhiệt độ'
+        value_template: "{{ states.sensor.temperature_158d0001e6bbeb.attributes.battery_level|default(-1)|int if states.sensor.temperature_158d0001e6bbeb is not none }}"
+        unit_of_measurement: '%'
+        icon_template: '{% if states.sensor.temperature_158d0001e6bbeb.attributes.battery_level == 100 %}
+                           mdi:battery
+                        {% elif states.sensor.temperature_158d0001e6bbeb.attributes.battery_level >= 90 %}
+                           mdi:battery-90
+                        {% elif states.sensor.temperature_158d0001e6bbeb.attributes.battery_level >= 80 %}
+                           mdi:battery-80
+                        {% elif states.sensor.temperature_158d0001e6bbeb.attributes.battery_level >= 70 %}
+                           mdi:battery-70
+                        {% elif states.sensor.temperature_158d0001e6bbeb.attributes.battery_level >= 60 %}
+                           mdi:battery-60
+                        {% elif states.sensor.temperature_158d0001e6bbeb.attributes.battery_level >= 50 %}
+                           mdi:battery-50
+                        {% elif states.sensor.temperature_158d0001e6bbeb.attributes.battery_level >= 40 %}
+                           mdi:battery-40
+                        {% elif states.sensor.temperature_158d0001e6bbeb.attributes.battery_level >= 30 %}
+                           mdi:battery-30
+                        {% elif states.sensor.temperature_158d0001e6bbeb.attributes.battery_level >= 20 %}
+                           mdi:battery-20
+                        {% elif states.sensor.temperature_158d0001e6bbeb.attributes.battery_level >= 10 %}
+                           mdi:battery-10
+                        {% else %}
+                           battery-outline
+                        {% endif %}'
+  - platform: template
+    sensors:
+      weathertoday:
+        friendly_name: "Thời tiết hôm nay" 
+        value_template: >-
+          {% if is_state('sensor.dark_sky_icon', 'partly-cloudy-day') %}
+            Ngày trời ít mây
+          {% elif is_state('sensor.dark_sky_icon', 'clear-day') %}
+            Ngày trời trong xanh
+          {% elif is_state('sensor.dark_sky_icon', 'clear-night') %}
+            Đêm trời đẹp
+          {% elif is_state('sensor.dark_sky_icon', 'rain') %}
+            Trời mưa
+          {% elif is_state('sensor.dark_sky_icon', 'wind') %}
+            Gió nhiều
+          {% elif is_state('sensor.dark_sky_icon', 'cloudy') %}
+            Trời nhiều mây
+          {% elif is_state('sensor.dark_sky_icon', 'partly-cloudy-night') %}
+            Đêm trời nhiều mây
+          {% elif is_state('sensor.dark_sky_icon', 'fog') %}
+            Sương mù
+          {% elif is_state('sensor.dark_sky_nearest_storm_distance', 'unknown') %}
+            Không có cơn bão nào
+          {% else %}
+            ...
+          {% endif %}
+switch :
+  - platform: xiaomi_miio
+    name: Power Strip
+    host: 192.168.31.67
+    token: *****
+    model: qmi.powerstrip.v1
+  - platform: broadlink
+    host: 192.168.31.3
+    mac: '78:0F:77:50:ED:**'
+    timeout: 5
+  - platform: mqtt
+    name: "Living Room Light"
+    icon: mdi:lightbulb-outline
+    state_topic: "stat/living/POWER1"
+    command_topic: "cmnd/living/POWER1"
+    qos: 0
+    payload_on: "ON"
+    payload_off: "OFF"
+    retain: true
+    
+  - platform: mqtt
+    name: "Light Outdoor 1"
+    icon: mdi:lightbulb-outline
+    state_topic: "stat/living/POWER2"
+    command_topic: "cmnd/living/POWER2"
+    qos: 0
+    payload_on: "ON"
+    payload_off: "OFF"
+    retain: true  
+    
+  - platform: mqtt
+    name: "Kitchen Light"
+    icon: mdi:lightbulb-outline
+    state_topic: "stat/kitchen/POWER1"
+    command_topic: "cmnd/kitchen/POWER1"
+    qos: 0
+    payload_on: "ON"
+    payload_off: "OFF"
+    retain: true
+    
+  - platform: mqtt
+    name: "Kitchen Light Outdoor"
+    icon: mdi:lightbulb-outline
+    state_topic: "stat/kitchen/POWER2"
+    command_topic: "cmnd/kitchen/POWER2"
+    qos: 0
+    payload_on: "ON"
+    payload_off: "OFF"
+    retain: true
+    
+  - platform: mqtt
+    name: "Bedroom 1 Light"
+    icon: mdi:lightbulb-outline
+    state_topic: "stat/bedroom1/POWER"
+    command_topic: "cmnd/bedroom1/POWER"
+    qos: 0
+    payload_on: "ON"
+    payload_off: "OFF"
+    retain: true
+    
+    
+  - platform: mqtt
+    name: "Ga ra"
+    icon: mdi:lightbulb-outline
+    state_topic: "stat/gara/POWER"
+    command_topic: "cmnd/gara/POWER"
+    qos: 0
+    payload_on: "ON"
+    payload_off: "OFF"
+    retain: true
+    
+  - platform: mqtt
+    name: "Ligth Outdoor 2"
+    icon: mdi:lightbulb-outline
+    state_topic: "stat/nt/POWER2"
+    command_topic: "cmnd/nt/POWER2"
+    qos: 0
+    payload_on: "ON"
+    payload_off: "OFF"
+    retain: true
+    
+  - platform: mqtt
+    name: "Ligth NT"
+    icon: mdi:lightbulb-outline
+    state_topic: "stat/nt/POWER1"
+    command_topic: "cmnd/nt/POWER1"
+    qos: 0
+    payload_on: "ON"
+    payload_off: "OFF"
+    retain: true
+ 
+  - platform: mqtt
+    name: "Ligth Bathroom 1"
+    icon: mdi:lightbulb-outline
+    state_topic: "stat/bathroom/POWER1"
+    command_topic: "cmnd/bathroom/POWER1"
+    qos: 0
+    payload_on: "OFF"
+    payload_off: "ON"
+    retain: true
+    
+  - platform: mqtt
+    name: "Ligth Bathroom 2"
+    icon: mdi:lightbulb-outline
+    state_topic: "stat/bathroom/POWER2"
+    command_topic: "cmnd/bathroom/POWER2"
+    qos: 0
+    payload_on: "OFF"
+    payload_off: "ON"
+    retain: true
+  - platform: mqtt
+    name: "Fan_CPU"
+    icon: mdi:fan
+    state_topic: "/fan/switchConfirm1/"
+    command_topic: "/fan/switch1/"
+    payload_on: "1"
+    payload_off: "0"
+    qos: 0
+    retain: true
+weather:
+  - platform: darksky
+    api_key: ****
+    mode: daily
+cast:
+  media_player:
+    - host: 192.168.31.20
+# Text to speech
+tts:
+  - platform: google
+    cache: true
+    cache_dir: /tmp/tts
+    time_memory: 300
+    language: 'vi'
+# Cloud
+cloud:
+homekit:
+group: !include groups.yaml
+automation: !include automations.yaml
+script: !include scripts.yaml
